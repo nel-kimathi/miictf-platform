@@ -12,7 +12,7 @@ Work top to bottom. Check off `[x]` as items complete and commit after each chec
 - [x] Set up folder structure: `/app/(public)`, `/app/(dashboard)/[role]`, `/app/admin`,
       `/lib`, `/components`, `/prisma`
 - [x] Basic CI: lint + type-check on push (GitHub Actions)
-- [ ] Initial commit + push
+- [x] Initial commit + push
 
 ## Phase 1 — Public Site + Registration
 
