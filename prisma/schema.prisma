@@ -92,3 +92,57 @@ model Verification {
 
   @@map("verification")
 }
+
+// --- CMS (public site content) ---
+
+model Page {
+  id       String    @id
+  slug     String    @unique // e.g. "home", "about", "trade-fair"
+  title    String
+  sections Section[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("page")
+}
+
+model Section {
+  id        String   @id
+  pageId    String
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  key       String   // e.g. "hero", "leadership", "body", "cta"
+  order     Int      @default(0)
+  title     String?
+  subtitle  String?
+  body      String?  @db.Text // markdown / rich text
+  imageUrl  String?
+  metadata  Json?    // structured content: cards, tiers, events, faq items
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("section")
+}
+
+// --- News (public list/detail; admin CRUD arrives in Phase 2) ---
+
+enum NewsStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+}
+
+model News {
+  id          String     @id
+  title       String
+  slug        String     @unique
+  excerpt     String?    @db.Text
+  content     String     @db.Text
+  coverImage  String?
+  category    String?    // free-text for now; category management is Phase 2
+  status      NewsStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("news")
+}
