@@ -4,14 +4,14 @@ Work top to bottom. Check off `[x]` as items complete and commit after each chec
 
 ## Phase 0 — Scaffolding (do first, one session)
 
-- [ ] Initialize Next.js 15 (App Router, TypeScript, Tailwind) in the repo
-- [ ] Add shadcn/ui, set up base theme tokens matching the Figma reference colors
-- [ ] Set up Prisma with MySQL provider, `.env.example` with `DATABASE_URL` placeholder
-- [ ] Define initial Prisma schema: User (with role enum), Session, VerificationToken
-- [ ] Set up Better Auth with email/password + email verification flow (stub SMTP for now)
-- [ ] Set up folder structure: `/app/(public)`, `/app/(dashboard)/[role]`, `/app/admin`,
+- [x] Initialize Next.js 15 (App Router, TypeScript, Tailwind) in the repo
+- [x] Add shadcn/ui, set up base theme tokens matching the Figma reference colors
+- [x] Set up Prisma with MySQL provider, `.env.example` with `DATABASE_URL` placeholder
+- [x] Define initial Prisma schema: User (with role enum), Session, VerificationToken
+- [x] Set up Better Auth with email/password + email verification flow (stub SMTP for now)
+- [x] Set up folder structure: `/app/(public)`, `/app/(dashboard)/[role]`, `/app/admin`,
       `/lib`, `/components`, `/prisma`
-- [ ] Basic CI: lint + type-check on push (GitHub Actions)
+- [x] Basic CI: lint + type-check on push (GitHub Actions)
 - [ ] Initial commit + push
 
 ## Phase 1 — Public Site + Registration
