@@ -390,7 +390,7 @@ async function main() {
         subtitle: s.subtitle ?? null,
         body: s.body ?? null,
         imageUrl: s.imageUrl ?? null,
-        metadata: s.metadata ?? null,
+        metadata: s.metadata ?? undefined,
       })),
     });
   }

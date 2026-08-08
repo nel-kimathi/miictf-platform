@@ -123,6 +123,16 @@ model Section {
   @@map("section")
 }
 
+// --- Newsletter (footer signup on the public site) ---
+
+model NewsletterSubscriber {
+  id        String   @id
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("newsletter_subscriber")
+}
+
 // --- News (public list/detail; admin CRUD arrives in Phase 2) ---
 
 enum NewsStatus {
