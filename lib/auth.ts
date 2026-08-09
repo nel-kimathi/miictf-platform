@@ -30,6 +30,9 @@ export const auth = betterAuth({
       country: { type: "string", required: false },
       // The participant type the person registered as. Maps to role below.
       category: { type: "string", required: false, defaultValue: "DELEGATE" },
+      // Exposed on the session for redirects/guards, but never settable by
+      // the client (input: false) — role is assigned server-side only.
+      role: { type: "string", required: false, input: false },
     },
   },
   databaseHooks: {

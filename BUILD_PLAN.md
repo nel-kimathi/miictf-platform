@@ -17,25 +17,25 @@ Work top to bottom. Check off `[x]` as items complete and commit after each chec
 ## Phase 1 — Public Site + Registration
 
 ### Public pages (CMS-backed, not hardcoded)
-- [ ] Content model: generic `Page` + `Section` tables so admin can edit page content
-- [ ] Home (hero, leadership cards, investment teaser, sponsorship teaser, events preview) —
+- [x] Content model: generic `Page` + `Section` tables so admin can edit page content
+- [x] Home (hero, leadership cards, investment teaser, sponsorship teaser, events preview) —
       match Figma structure
-- [ ] About MIICTF
-- [ ] Investment Opportunities
-- [ ] Trade Fair
-- [ ] Conference Programme
-- [ ] Sponsors and Partners
-- [ ] News & Updates (list/detail — reads from News module once it exists in Phase 2)
-- [ ] FAQ
-- [ ] Contact (with working contact form → email via Hostinger SMTP)
+- [x] About MIICTF
+- [x] Investment Opportunities
+- [x] Trade Fair
+- [x] Conference Programme
+- [x] Sponsors and Partners
+- [x] News & Updates (list/detail — reads from News module once it exists in Phase 2)
+- [x] FAQ
+- [x] Contact (with working contact form → email via Hostinger SMTP)
 
 ### Registration & auth
-- [ ] Register page: Full Name, Email, Phone, Organization, Country, Category, Password
-- [ ] Email verification flow (send + confirm)
-- [ ] Login page
-- [ ] Role-based redirect after login (delegate/sponsor/exhibitor/admin land on
+- [x] Register page: Full Name, Email, Phone, Organization, Country, Category, Password
+- [x] Email verification flow (send + confirm)
+- [x] Login page
+- [x] Role-based redirect after login (delegate/sponsor/exhibitor/admin land on
       different dashboards, even if those dashboards are minimal stubs for now)
-- [ ] Password hashing confirmed end-to-end, session management working
+- [x] Password hashing confirmed end-to-end, session management working
 
 **Milestone check:** public site browsable, a user can register, verify email, log in,
 and land on a role-appropriate (even if bare) dashboard.

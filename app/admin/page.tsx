@@ -1,10 +1,38 @@
-export default function AdminPage() {
+import { redirect } from "next/navigation";
+import { getSession } from "@/lib/session";
+import { dashboardPathForRole } from "@/lib/roles";
+import { SignOutButton } from "@/components/auth/sign-out-button";
+
+const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"];
+
+export default async function AdminPage() {
+  const session = await getSession();
+  if (!session || !session.user.emailVerified) {
+    redirect("/login");
+  }
+  const userRole = (session.user as { role?: string }).role ?? "DELEGATE";
+  if (!ADMIN_ROLES.includes(userRole)) {
+    redirect(dashboardPathForRole(userRole));
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-3xl font-heading font-bold">Administration Portal</h1>
-      <p className="text-muted-foreground">
-        Stub admin portal. Modules arrive in Phase 2.
-      </p>
+    <main className="mx-auto max-w-3xl px-4 py-12">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-primary">
+          Administration Portal
+        </h1>
+        <SignOutButton />
+      </div>
+      <div className="mt-6 rounded-lg border bg-card p-6">
+        <p className="font-medium">Welcome, {session.user.name}</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Role: {userRole === "SUPER_ADMIN" ? "Super Administrator" : "Administrator"}
+        </p>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Admin modules (dashboard, user management, delegates, sponsors,
+          exhibitors, booths, news, reports, settings, logs) arrive in Phase 2.
+        </p>
+      </div>
     </main>
   );
 }
