@@ -17,7 +17,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
-        <Link href="/" className="text-xl font-bold tracking-tight text-primary">
+        <Link href="/" className="font-heading text-xl font-bold tracking-tight text-primary">
           MIICTF
         </Link>
         <nav className="flex flex-1 flex-wrap items-center gap-x-4 gap-y-1 text-sm">

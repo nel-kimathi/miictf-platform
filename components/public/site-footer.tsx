@@ -6,14 +6,14 @@ export function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-3">
         <div>
-          <p className="text-lg font-bold">MIICTF</p>
+          <p className="font-heading text-lg font-bold">MIICTF</p>
           <p className="mt-2 text-sm text-primary-foreground/80">
             Meru International Investment Conference &amp; Trade Fair —
             connecting investors, government and business.
           </p>
         </div>
         <div>
-          <p className="font-semibold">Quick Links</p>
+          <p className="font-heading font-semibold">Quick Links</p>
           <ul className="mt-2 space-y-1 text-sm text-primary-foreground/80">
             <li><Link href="/about" className="hover:underline">About</Link></li>
             <li><Link href="/conference-programme" className="hover:underline">Programme</Link></li>
@@ -22,7 +22,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="font-semibold">Newsletter</p>
+          <p className="font-heading font-semibold">Newsletter</p>
           <p className="mt-2 text-sm text-primary-foreground/80">
             Get conference updates in your inbox.
           </p>

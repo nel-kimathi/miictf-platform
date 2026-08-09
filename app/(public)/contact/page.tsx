@@ -20,7 +20,7 @@ export default async function ContactPage() {
       ))}
       <section className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:grid-cols-2">
         <div>
-          <h2 className="text-xl font-semibold text-primary">Send a message</h2>
+          <h2 className="font-heading text-xl font-semibold text-primary">Send a message</h2>
           <div className="mt-4">
             <ContactForm />
           </div>

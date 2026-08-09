@@ -64,7 +64,7 @@ export function RegisterForm() {
   if (done) {
     return (
       <div className="rounded-lg border bg-card p-6 text-center">
-        <h2 className="text-lg font-semibold text-primary">Check your email</h2>
+        <h2 className="font-heading text-lg font-semibold text-primary">Check your email</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           We&apos;ve sent a verification link to your email address. Click it to
           activate your account, then log in.

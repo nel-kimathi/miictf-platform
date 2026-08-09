@@ -18,7 +18,7 @@ export default async function AdminPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-primary">
+        <h1 className="font-heading text-3xl font-bold text-primary">
           Administration Portal
         </h1>
         <SignOutButton />

@@ -38,7 +38,7 @@ function Hero({ section }: { section: PageSection }) {
   return (
     <section className="bg-primary px-4 py-20 text-center text-primary-foreground">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
           {section.title}
         </h1>
         {section.subtitle ? (
@@ -59,7 +59,7 @@ function RichSection({ section }: { section: PageSection }) {
   return (
     <section className="mx-auto max-w-3xl px-4 py-12">
       {section.title ? (
-        <h2 className="text-2xl font-bold text-primary">{section.title}</h2>
+        <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
       ) : null}
       {section.body ? (
         <p className="mt-3 whitespace-pre-line leading-relaxed text-muted-foreground">
@@ -77,7 +77,7 @@ function CardGrid({ section }: { section: PageSection }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
       {section.title ? (
-        <h2 className="text-center text-2xl font-bold text-primary">
+        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
           {section.title}
         </h2>
       ) : null}
@@ -119,7 +119,7 @@ function TierCards({ section }: { section: PageSection }) {
     <section className="bg-secondary/60 px-4 py-12">
       <div className="mx-auto max-w-7xl">
         {section.title ? (
-          <h2 className="text-center text-2xl font-bold text-primary">
+          <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
             {section.title}
           </h2>
         ) : null}
@@ -159,7 +159,7 @@ function EventList({ section }: { section: PageSection }) {
   return (
     <section className="mx-auto max-w-4xl px-4 py-12">
       {section.title ? (
-        <h2 className="text-center text-2xl font-bold text-primary">
+        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
           {section.title}
         </h2>
       ) : null}
@@ -207,7 +207,7 @@ function FaqList({ section }: { section: PageSection }) {
   return (
     <section className="mx-auto max-w-3xl px-4 py-12">
       {section.title ? (
-        <h2 className="text-center text-2xl font-bold text-primary">
+        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
           {section.title}
         </h2>
       ) : null}
@@ -229,7 +229,7 @@ function CtaBand({ section }: { section: PageSection }) {
     <section className="bg-accent/40 px-4 py-12 text-center">
       <div className="mx-auto max-w-2xl">
         {section.title ? (
-          <h2 className="text-2xl font-bold text-primary">{section.title}</h2>
+          <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
         ) : null}
         {section.body ? (
           <p className="mt-2 text-muted-foreground">{section.body}</p>

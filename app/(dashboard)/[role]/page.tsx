@@ -27,7 +27,7 @@ export default async function RoleDashboardPage({
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold capitalize text-primary">
+        <h1 className="font-heading text-3xl font-bold capitalize text-primary">
           {role} Dashboard
         </h1>
         <SignOutButton />
