@@ -35,20 +35,45 @@ function CtaLinks({ cta }: { cta?: { label: string; href: string }[] }) {
 
 function Hero({ section }: { section: PageSection }) {
   const m = meta(section);
+  const hasImage = !!section.imageUrl;
   return (
-    <section className="bg-primary px-4 py-20 text-center text-primary-foreground">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+    <section
+      className={`relative px-4 py-24 text-center text-primary-foreground sm:py-32 ${
+        hasImage ? "bg-cover bg-center" : "bg-primary"
+      }`}
+      style={hasImage ? { backgroundImage: `url(${section.imageUrl})` } : undefined}
+    >
+      {hasImage && <div className="absolute inset-0 bg-black/50" />}
+      <div className="relative mx-auto max-w-3xl">
+        {m.badge ? (
+          <span className="mb-4 inline-block rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+            {m.badge}
+          </span>
+        ) : null}
+        <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
           {section.title}
         </h1>
         {section.subtitle ? (
-          <p className="mt-3 text-lg text-accent">{section.subtitle}</p>
+          <p className="mt-4 text-lg text-accent sm:text-xl">{section.subtitle}</p>
         ) : null}
         {section.body ? (
           <p className="mt-4 text-primary-foreground/85">{section.body}</p>
         ) : null}
-        <div className="mt-6 flex justify-center [&_a]:bg-accent [&_a]:text-accent-foreground">
-          <CtaLinks cta={m.cta} />
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          {m.cta?.map((c: { label: string; href: string }, i: number) => (
+            <Button
+              key={c.href + c.label}
+              variant={i === 0 ? "default" : "outline"}
+              className={
+                i === 0
+                  ? "bg-accent text-accent-foreground hover:bg-accent/90"
+                  : "border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
+              }
+              render={<Link href={c.href} />}
+            >
+              {c.label}
+            </Button>
+          ))}
         </div>
       </div>
     </section>
@@ -57,12 +82,12 @@ function Hero({ section }: { section: PageSection }) {
 
 function RichSection({ section }: { section: PageSection }) {
   return (
-    <section className="mx-auto max-w-3xl px-4 py-12">
+    <section className="mx-auto max-w-3xl px-4 py-16">
       {section.title ? (
         <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
       ) : null}
       {section.body ? (
-        <p className="mt-3 whitespace-pre-line leading-relaxed text-muted-foreground">
+        <p className="mt-4 whitespace-pre-line leading-relaxed text-muted-foreground">
           {section.body}
         </p>
       ) : null}
@@ -72,54 +97,67 @@ function RichSection({ section }: { section: PageSection }) {
 
 function CardGrid({ section }: { section: PageSection }) {
   const m = meta(section);
-  const cards: { title: string; role?: string; description?: string }[] =
-    m.cards ?? [];
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-12">
-      {section.title ? (
-        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
-          {section.title}
-        </h2>
-      ) : null}
-      {section.subtitle ? (
-        <p className="mt-2 text-center text-muted-foreground">
-          {section.subtitle}
-        </p>
-      ) : null}
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card, i) => (
-          <Card key={i}>
-            <CardHeader>
-              <CardTitle>{card.title}</CardTitle>
-              {card.role ? (
-                <CardDescription>{card.role}</CardDescription>
-              ) : null}
-            </CardHeader>
-            {card.description ? (
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {card.description}
-                </p>
-              </CardContent>
-            ) : null}
-          </Card>
-        ))}
-      </div>
-      <div className="flex justify-center">
-        <CtaLinks cta={m.cta ? [m.cta] : undefined} />
-      </div>
-    </section>
-  );
-}
+  const cards: {
+    title: string;
+    role?: string;
+    description?: string;
+    image?: string;
+  }[] = m.cards ?? [];
+  const variant = m.variant as string | undefined;
 
-function TierCards({ section }: { section: PageSection }) {
-  const m = meta(section);
-  const tiers: { name: string; description?: string }[] = m.tiers ?? [];
+  if (variant === "leadership") {
+    return (
+      <section className="bg-secondary/60 px-4 py-16">
+        <div className="mx-auto max-w-5xl">
+          {section.title ? (
+            <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
+              {section.title}
+            </h2>
+          ) : null}
+          {section.subtitle ? (
+            <p className="mt-2 text-center text-muted-foreground">
+              {section.subtitle}
+            </p>
+          ) : null}
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center rounded-xl bg-primary p-6 text-center text-primary-foreground"
+              >
+                {card.image ? (
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="mb-4 h-28 w-28 rounded-full object-cover ring-4 ring-primary-foreground/20"
+                  />
+                ) : (
+                  <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-primary-foreground/20 text-3xl font-bold text-primary-foreground">
+                    {card.title.charAt(0)}
+                  </div>
+                )}
+                <h3 className="font-heading text-lg font-semibold">{card.title}</h3>
+                {card.role ? (
+                  <p className="mt-1 text-sm text-primary-foreground/80">
+                    {card.role}
+                  </p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center">
+            <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="bg-secondary/60 px-4 py-12">
+    <section className="px-4 py-16">
       <div className="mx-auto max-w-7xl">
         {section.title ? (
-          <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
+          <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
             {section.title}
           </h2>
         ) : null}
@@ -128,7 +166,51 @@ function TierCards({ section }: { section: PageSection }) {
             {section.subtitle}
           </p>
         ) : null}
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {cards.map((card, i) => (
+            <Card key={i}>
+              <CardHeader>
+                <CardTitle>{card.title}</CardTitle>
+                {card.role ? (
+                  <CardDescription>{card.role}</CardDescription>
+                ) : null}
+              </CardHeader>
+              {card.description ? (
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {card.description}
+                  </p>
+                </CardContent>
+              ) : null}
+            </Card>
+          ))}
+        </div>
+        <div className="flex justify-center">
+          <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TierCards({ section }: { section: PageSection }) {
+  const m = meta(section);
+  const tiers: { name: string; description?: string }[] = m.tiers ?? [];
+  const brands: { name: string }[] = m.brands ?? [];
+  return (
+    <section className="bg-secondary/60 px-4 py-16">
+      <div className="mx-auto max-w-7xl">
+        {section.title ? (
+          <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
+            {section.title}
+          </h2>
+        ) : null}
+        {section.subtitle ? (
+          <p className="mt-2 text-center text-muted-foreground">
+            {section.subtitle}
+          </p>
+        ) : null}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {tiers.map((tier, i) => (
             <Card key={i} className="border-t-4 border-t-accent">
               <CardHeader>
@@ -144,7 +226,24 @@ function TierCards({ section }: { section: PageSection }) {
             </Card>
           ))}
         </div>
-        <div className="flex justify-center">
+        {brands.length > 0 ? (
+          <div className="mt-16 text-center">
+            <p className="font-heading text-2xl font-bold text-primary">
+              Join these brands
+            </p>
+            <p className="mt-2 text-muted-foreground">
+              We&apos;ve had the pleasure of working with some outstanding past sponsors.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {brands.map((b, i) => (
+                <span key={i} className="text-lg font-semibold text-muted-foreground/70">
+                  {b.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        ) : null}
+        <div className="mt-10 flex justify-center">
           <CtaLinks cta={m.cta ? [m.cta] : undefined} />
         </div>
       </div>
@@ -154,48 +253,61 @@ function TierCards({ section }: { section: PageSection }) {
 
 function EventList({ section }: { section: PageSection }) {
   const m = meta(section);
-  const events: { title: string; time?: string; description?: string }[] =
-    m.events ?? [];
+  const events: {
+    title: string;
+    time?: string;
+    description?: string;
+    image?: string;
+  }[] = m.events ?? [];
   return (
-    <section className="mx-auto max-w-4xl px-4 py-12">
-      {section.title ? (
-        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
-          {section.title}
-        </h2>
-      ) : null}
-      {section.subtitle ? (
-        <p className="mt-2 text-center text-muted-foreground">
-          {section.subtitle}
-        </p>
-      ) : null}
-      {section.body ? (
-        <p className="mt-2 text-center text-sm text-muted-foreground">
-          {section.body}
-        </p>
-      ) : null}
-      <div className="mt-8 space-y-4">
-        {events.map((event, i) => (
-          <Card key={i}>
-            <CardHeader className="flex flex-row items-baseline justify-between gap-4">
-              <CardTitle className="text-lg">{event.title}</CardTitle>
-              {event.time ? (
-                <span className="shrink-0 text-sm font-medium text-accent-foreground/80">
-                  {event.time}
-                </span>
+    <section className="px-4 py-16">
+      <div className="mx-auto max-w-5xl">
+        {section.title ? (
+          <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
+            {section.title}
+          </h2>
+        ) : null}
+        {section.subtitle ? (
+          <p className="mt-2 text-center text-muted-foreground">
+            {section.subtitle}
+          </p>
+        ) : null}
+        {section.body ? (
+          <p className="mt-2 text-center text-sm text-muted-foreground">
+            {section.body}
+          </p>
+        ) : null}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {events.map((event, i) => (
+            <Card key={i} className="overflow-hidden">
+              {event.image ? (
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="h-40 w-full object-cover"
+                />
               ) : null}
-            </CardHeader>
-            {event.description ? (
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {event.description}
-                </p>
-              </CardContent>
-            ) : null}
-          </Card>
-        ))}
-      </div>
-      <div className="flex justify-center">
-        <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+              <CardHeader>
+                <CardTitle className="text-lg">{event.title}</CardTitle>
+                {event.time ? (
+                  <span className="text-sm font-medium text-accent-foreground/80">
+                    {event.time}
+                  </span>
+                ) : null}
+              </CardHeader>
+              {event.description ? (
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {event.description}
+                  </p>
+                </CardContent>
+              ) : null}
+            </Card>
+          ))}
+        </div>
+        <div className="flex justify-center">
+          <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+        </div>
       </div>
     </section>
   );
@@ -205,13 +317,13 @@ function FaqList({ section }: { section: PageSection }) {
   const m = meta(section);
   const items: { question: string; answer: string }[] = m.items ?? [];
   return (
-    <section className="mx-auto max-w-3xl px-4 py-12">
+    <section className="mx-auto max-w-3xl px-4 py-16">
       {section.title ? (
-        <h2 className="font-heading text-center font-heading text-2xl font-bold text-primary">
+        <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
           {section.title}
         </h2>
       ) : null}
-      <Accordion className="mt-8">
+      <Accordion className="mt-10">
         {items.map((item, i) => (
           <AccordionItem key={i} value={`item-${i}`}>
             <AccordionTrigger>{item.question}</AccordionTrigger>
@@ -226,10 +338,10 @@ function FaqList({ section }: { section: PageSection }) {
 function CtaBand({ section }: { section: PageSection }) {
   const m = meta(section);
   return (
-    <section className="bg-accent/40 px-4 py-12 text-center">
+    <section className="bg-accent/40 px-4 py-16 text-center">
       <div className="mx-auto max-w-2xl">
         {section.title ? (
-          <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
+          <h2 className="font-heading text-3xl font-bold text-primary">{section.title}</h2>
         ) : null}
         {section.body ? (
           <p className="mt-2 text-muted-foreground">{section.body}</p>

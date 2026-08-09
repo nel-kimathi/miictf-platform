@@ -40,24 +40,26 @@ const pages: PageSeed[] = [
         subtitle: "Unlocking investment and trade opportunities in Meru",
         body: "MIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
         metadata: {
+          badge: "June 25 – 27, 2026 · Meru, Kenya",
           cta: [
+            { label: "Discover More", href: "/about" },
             { label: "Register to Attend", href: "/register" },
-            { label: "Become a Sponsor", href: "/sponsors-partners" },
           ],
         },
       },
       {
         key: "intro",
         order: 1,
-        title: "About the Conference",
-        body: "MIICTF is the premier platform for investment and trade in the region, connecting local and international investors with bankable projects, SMEs with markets, and policymakers with partners.",
+        title: "Meru County: The Land of Prosperity",
+        body: "Meru is a highland County nestled on the fertile slopes of Mount Kenya in the Eastern Region. Spanning 7,003 sq km with a population of 1.5 million, it serves as a strategic gateway between Nairobi and the Northern Frontier.\n\nEconomic & Social Development\nMeru has experienced rapid economic growth, driven by a highly educated populace and a diverse economic base.\n\nAgriculture & Business: A global leader in Miraa (Khat), Macadamia, and Coffee production, alongside Tea, Bananas, Avocado, Tourism, Trade & Industry.",
       },
       {
         key: "leadership",
         order: 2,
-        title: "Conference Leadership",
+        title: "Our Leadership",
         subtitle: "The team championing MIICTF",
         metadata: {
+          variant: "leadership",
           cards: [
             {
               title: "Conference Patron",
@@ -102,6 +104,17 @@ const pages: PageSeed[] = [
             { name: "Platinum", description: "Headline visibility and premium exhibition space." },
             { name: "Gold", description: "Prominent branding and speaking opportunities." },
             { name: "Silver", description: "Brand presence and exhibition booth." },
+          ],
+          brands: [
+            { name: "Spotify" },
+            { name: "Google" },
+            { name: "Stripe" },
+            { name: "YouTube" },
+            { name: "Microsoft" },
+            { name: "Medium" },
+            { name: "Zoom" },
+            { name: "Uber" },
+            { name: "Grab" },
           ],
           cta: { label: "Sponsorship Details", href: "/sponsors-partners" },
         },
