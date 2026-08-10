@@ -6,10 +6,11 @@ export function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-heading text-lg font-bold">Meru Investors Conference</p>
+          <p className="font-heading text-lg font-bold">MIICTF</p>
           <p className="mt-2 text-sm text-primary-foreground/80">
-            Paradise Lost is a pioneering global platform connecting diaspora
-            communities, investors, and opportunities.
+            Meru International Investment Conference &amp; Trade Fair —
+            connecting investors, government and business to opportunities in
+            Meru.
           </p>
         </div>
         <div>
@@ -24,7 +25,7 @@ export function SiteFooter() {
         <div>
           <p className="font-heading font-semibold">Get In Touch</p>
           <ul className="mt-2 space-y-1 text-sm text-primary-foreground/80">
-            <li>contact@miictf.com</li>
+            <li>secretariat@example.com</li>
             <li>Meru, Kenya</li>
           </ul>
         </div>

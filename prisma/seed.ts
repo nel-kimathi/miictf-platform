@@ -48,35 +48,39 @@ const pages: PageSeed[] = [
         },
       },
       {
-        key: "intro",
-        order: 1,
-        title: "Meru County: The Land of Prosperity",
-        body: "Meru is a highland County nestled on the fertile slopes of Mount Kenya in the Eastern Region. Spanning 7,003 sq km with a population of 1.5 million, it serves as a strategic gateway between Nairobi and the Northern Frontier.\n\nEconomic & Social Development\nMeru has experienced rapid economic growth, driven by a highly educated populace and a diverse economic base.\n\nAgriculture & Business: A global leader in Miraa (Khat), Macadamia, and Coffee production, alongside Tea, Bananas, Avocado, Tourism, Trade & Industry.",
-      },
-      {
         key: "leadership",
-        order: 2,
+        order: 1,
         title: "Our Leadership",
         subtitle: "The team championing MIICTF",
         metadata: {
           variant: "leadership",
           cards: [
             {
-              title: "Conference Patron",
-              role: "County Leadership",
-              description: "Provides overall leadership and vision for the conference and trade fair.",
+              title: "H.E. Isaac Mutuma M'Ethingia",
+              role: "Governor, Meru County",
+              image: "/images/leadership/governor.jpg",
             },
             {
-              title: "Conference Chair",
-              role: "MIICTF Secretariat",
-              description: "Leads planning, partnerships and delivery of the conference programme.",
+              title: "Prof. Romanus Odhiambo, Ph.D.",
+              role: "Vice Chancellor, MKU",
+              image: "/images/leadership/vice-chancellor.jpg",
             },
             {
-              title: "Head, Trade & Investment",
-              role: "Investment Desk",
-              description: "Coordinates investment opportunities and investor facilitation.",
+              title: "Mr. Joshua K. Mungania",
+              role: "Chairman MCCI (Meru Chapter)",
+              image: "/images/leadership/chairman.jpg",
             },
           ],
+        },
+      },
+      {
+        key: "meru-county",
+        order: 2,
+        title: "Meru County: The Land of Prosperity",
+        body: "Meru is a highland County nestled on the fertile slopes of Mount Kenya in the Eastern Region. Spanning 7,003 sq km with a population of 1.5 million, it serves as a strategic gateway between Nairobi and the Northern Frontier.\n\nEconomic & Social Development\nMeru has experienced rapid economic growth, driven by a highly educated populace and a diverse economic base.\n\nAgriculture & Business: A global leader in Miraa (Khat), Macadamia, and Coffee production, alongside Tea, Bananas, Avocado, Tourism, Trade & Industry.",
+        imageUrl: "/images/meru-county.jpg",
+        metadata: {
+          cta: [{ label: "About us", href: "/about" }],
         },
       },
       {
@@ -122,13 +126,13 @@ const pages: PageSeed[] = [
       {
         key: "events-preview",
         order: 5,
-        title: "Programme Highlights",
+        title: "Scheduled Events",
         subtitle: "Key sessions and activities",
         metadata: {
           events: [
-            { title: "Opening Ceremony", time: "Day 1 · Morning", description: "Official opening and keynote addresses." },
-            { title: "Investor Panel Discussions", time: "Day 1 · Afternoon", description: "Sector panels with investors and government." },
-            { title: "Trade Fair & Exhibitions", time: "All Days", description: "Exhibition booths and B2B networking." },
+            { title: "Opening Ceremony", time: "Day 1 · Morning", description: "Official opening and keynote addresses.", image: "/images/events/opening.jpg" },
+            { title: "Investor Panel Discussions", time: "Day 1 · Afternoon", description: "Sector panels with investors and government.", image: "/images/events/panel.jpg" },
+            { title: "Trade Fair & Exhibitions", time: "All Days", description: "Exhibition booths and B2B networking.", image: "/images/events/trade-fair.jpg" },
           ],
           cta: { label: "Full Programme", href: "/conference-programme" },
         },

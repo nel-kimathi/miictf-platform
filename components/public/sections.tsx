@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { PageSection } from "@/lib/content";
 import { Button } from "@/components/ui/button";
+import { ImgWithFallback } from "@/components/public/img-with-fallback";
 import {
   Card,
   CardContent,
@@ -67,7 +68,7 @@ function Hero({ section }: { section: PageSection }) {
               className={
                 i === 0
                   ? "bg-accent text-accent-foreground hover:bg-accent/90"
-                  : "border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
+                  : "border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
               }
               render={<Link href={c.href} />}
             >
@@ -91,6 +92,51 @@ function RichSection({ section }: { section: PageSection }) {
           {section.body}
         </p>
       ) : null}
+    </section>
+  );
+}
+
+function MeruCounty({ section }: { section: PageSection }) {
+  const m = meta(section);
+  return (
+    <section className="px-4 py-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+        <div>
+          {section.title ? (
+            <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+              {section.title}
+            </h2>
+          ) : null}
+          {section.body ? (
+            <div className="mt-6 space-y-4 whitespace-pre-line leading-relaxed text-muted-foreground">
+              {section.body.split("\n\n").map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          ) : null}
+          <div className="mt-6">
+            <CtaLinks cta={m.cta} />
+          </div>
+        </div>
+        <div className="relative flex items-center justify-center">
+          {section.imageUrl ? (
+            <ImgWithFallback
+              src={section.imageUrl}
+              alt={section.title ?? "Meru County"}
+              className="w-full rounded-xl object-cover shadow-lg"
+              fallback={
+                <div className="flex h-72 w-full items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/30 bg-muted/50 text-muted-foreground">
+                  Image placeholder
+                </div>
+              }
+            />
+          ) : (
+            <div className="flex h-72 w-full items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/30 bg-muted/50 text-muted-foreground">
+              Image placeholder
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
@@ -126,10 +172,15 @@ function CardGrid({ section }: { section: PageSection }) {
                 className="flex flex-col items-center rounded-xl bg-primary p-6 text-center text-primary-foreground"
               >
                 {card.image ? (
-                  <img
+                  <ImgWithFallback
                     src={card.image}
                     alt={card.title}
                     className="mb-4 h-28 w-28 rounded-full object-cover ring-4 ring-primary-foreground/20"
+                    fallback={
+                      <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-primary-foreground/20 text-3xl font-bold text-primary-foreground">
+                        {card.title.charAt(0)}
+                      </div>
+                    }
                   />
                 ) : (
                   <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-primary-foreground/20 text-3xl font-bold text-primary-foreground">
@@ -166,7 +217,11 @@ function CardGrid({ section }: { section: PageSection }) {
             {section.subtitle}
           </p>
         ) : null}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={`mt-10 grid gap-6 sm:grid-cols-2 ${
+            cards.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+          }`}
+        >
           {cards.map((card, i) => (
             <Card key={i}>
               <CardHeader>
@@ -259,9 +314,20 @@ function EventList({ section }: { section: PageSection }) {
     description?: string;
     image?: string;
   }[] = m.events ?? [];
+
+  const year = 2026;
+  const month = 5; // June (0-indexed)
+  const monthName = new Date(year, month).toLocaleString("en-US", { month: "long" });
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const eventDays = [25, 26, 27];
+
+  const blanks = Array.from({ length: firstDay }, (_, i) => i);
+  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+
   return (
     <section className="px-4 py-16">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         {section.title ? (
           <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
             {section.title}
@@ -272,40 +338,75 @@ function EventList({ section }: { section: PageSection }) {
             {section.subtitle}
           </p>
         ) : null}
-        {section.body ? (
-          <p className="mt-2 text-center text-sm text-muted-foreground">
-            {section.body}
-          </p>
-        ) : null}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((event, i) => (
-            <Card key={i} className="overflow-hidden">
-              {event.image ? (
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="h-40 w-full object-cover"
-                />
-              ) : null}
-              <CardHeader>
-                <CardTitle className="text-lg">{event.title}</CardTitle>
-                {event.time ? (
-                  <span className="text-sm font-medium text-accent-foreground/80">
-                    {event.time}
-                  </span>
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          {/* Event cards */}
+          <div className="space-y-4">
+            {events.map((event, i) => (
+              <Card key={i} className="overflow-hidden">
+                {event.image ? (
+                  <ImgWithFallback
+                    src={event.image}
+                    alt={event.title}
+                    className="h-40 w-full object-cover"
+                    fallback={null}
+                  />
                 ) : null}
+                <CardHeader>
+                  <CardTitle className="text-lg">{event.title}</CardTitle>
+                  {event.time ? (
+                    <span className="text-sm font-medium text-accent-foreground/80">
+                      {event.time}
+                    </span>
+                  ) : null}
+                </CardHeader>
+                {event.description ? (
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      {event.description}
+                    </p>
+                  </CardContent>
+                ) : null}
+              </Card>
+            ))}
+          </div>
+          {/* Calendar */}
+          <div className="flex justify-center self-start lg:sticky lg:top-24">
+            <Card className="w-full max-w-sm">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="font-heading text-lg">
+                    {monthName} {year}
+                  </CardTitle>
+                </div>
+                <div className="mt-1 grid grid-cols-7 gap-1 text-center text-xs font-medium text-muted-foreground">
+                  {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d) => (
+                    <span key={d} className="py-1">{d}</span>
+                  ))}
+                </div>
               </CardHeader>
-              {event.description ? (
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {event.description}
-                  </p>
-                </CardContent>
-              ) : null}
+              <CardContent>
+                <div className="grid grid-cols-7 gap-1 text-center text-sm">
+                  {blanks.map((b) => (
+                    <span key={`b${b}`} />
+                  ))}
+                  {days.map((d) => (
+                    <span
+                      key={d}
+                      className={`flex h-9 w-full items-center justify-center rounded-full ${
+                        eventDays.includes(d)
+                          ? "bg-primary font-semibold text-primary-foreground"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
             </Card>
-          ))}
+          </div>
         </div>
-        <div className="flex justify-center">
+        <div className="mt-10 flex justify-center">
           <CtaLinks cta={m.cta ? [m.cta] : undefined} />
         </div>
       </div>
@@ -384,6 +485,7 @@ const RENDERERS: Record<
   hero: Hero,
   intro: RichSection,
   body: RichSection,
+  "meru-county": MeruCounty,
   leadership: CardGrid,
   mission: CardGrid,
   "opportunities-teaser": CardGrid,
