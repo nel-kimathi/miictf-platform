@@ -36,7 +36,7 @@ const pages: PageSeed[] = [
       {
         key: "hero",
         order: 0,
-        title: "Meru International Investment Conference & Trade Fair",
+        title: "Meru Annual International Investors Conference and Trade Fair",
         subtitle: "Unlocking investment and trade opportunities in Meru",
         body: "MIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
         imageUrl: "/images/hero/tea-harvesting.jpeg",
