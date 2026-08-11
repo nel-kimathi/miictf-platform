@@ -234,6 +234,7 @@ function CardGrid({ section }: { section: PageSection }) {
 
   if (variant === "committee") {
     const anchorId = m.anchorId as string | undefined;
+    const cardsMeta: { org?: string }[] = m.cards ?? [];
     return (
       <section id={anchorId} className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-7xl">
@@ -247,57 +248,69 @@ function CardGrid({ section }: { section: PageSection }) {
               {section.subtitle}
             </p>
           ) : null}
-          <div
-            className={`mt-10 grid gap-6 sm:grid-cols-2 ${
-              cards.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"
-            }`}
-          >
-            {cards.map((card, i) => (
-              <Card
-                key={i}
-                className={`text-center transition-shadow hover:shadow-lg ${
-                  i % 2 === 0
-                    ? "border-t-4 border-t-primary"
-                    : "border-t-4 border-t-accent"
-                }`}
-              >
-                <CardHeader>
-                  {card.image ? (
-                    <ImgWithFallback
-                      src={card.image}
-                      alt={card.title}
-                      className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top ring-4 ring-primary/20"
-                      fallback={
-                        <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
-                          i % 2 === 0 ? "bg-primary" : "bg-accent"
-                        }`}>
-                          {card.title.charAt(0)}
-                        </div>
-                      }
-                    />
-                  ) : (
-                    <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
-                      i % 2 === 0 ? "bg-primary" : "bg-accent"
-                    }`}>
-                      {card.title.charAt(0)}
-                    </div>
-                  )}
-                  <CardTitle className="text-base">{card.title}</CardTitle>
-                  {card.role ? (
-                    <CardDescription className="font-semibold text-accent">
-                      {card.role}
-                    </CardDescription>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {cards.map((card, i) => {
+              const org = cardsMeta[i]?.org;
+              const orgColor =
+                org?.includes("MUST")
+                  ? "bg-primary/10 text-primary"
+                  : org?.includes("KNCCI")
+                    ? "bg-accent/20 text-accent-foreground"
+                    : org?.includes("Meru")
+                      ? "bg-accent/15 text-accent"
+                      : "bg-muted text-muted-foreground";
+              return (
+                <Card
+                  key={i}
+                  className={`text-center transition-shadow hover:shadow-lg ${
+                    i % 2 === 0
+                      ? "border-t-4 border-t-primary"
+                      : "border-t-4 border-t-accent"
+                  }`}
+                >
+                  <CardHeader>
+                    {card.image ? (
+                      <ImgWithFallback
+                        src={card.image}
+                        alt={card.title}
+                        className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top ring-4 ring-primary/20"
+                        fallback={
+                          <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
+                            i % 2 === 0 ? "bg-primary" : "bg-accent"
+                          }`}>
+                            {card.title.charAt(0)}
+                          </div>
+                        }
+                      />
+                    ) : (
+                      <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
+                        i % 2 === 0 ? "bg-primary" : "bg-accent"
+                      }`}>
+                        {card.title.charAt(0)}
+                      </div>
+                    )}
+                    <CardTitle className="text-base">{card.title}</CardTitle>
+                    {card.role ? (
+                      <CardDescription className="font-semibold text-accent">
+                        {card.role}
+                      </CardDescription>
+                    ) : null}
+                    {org ? (
+                      <span className={`mt-2 inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${orgColor}`}>
+                        {org}
+                      </span>
+                    ) : null}
+                  </CardHeader>
+                  {card.description ? (
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        {card.description}
+                      </p>
+                    </CardContent>
                   ) : null}
-                </CardHeader>
-                {card.description ? (
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      {card.description}
-                    </p>
-                  </CardContent>
-                ) : null}
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
           <div className="flex justify-center">
             <CtaLinks cta={m.cta ? [m.cta] : undefined} />
