@@ -25,14 +25,12 @@ const NAV_AFTER = [
   { label: "Contact", href: "/contact" },
 ];
 
-function NavLink({ href, label, pathname, solid }: { href: string; label: string; pathname: string; solid: boolean }) {
+function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
   const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className={`whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-        solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
-      } ${
+      className={`whitespace-nowrap rounded-[20px] px-3 py-1.5 text-sm font-bold tracking-wide transition-colors ${
         isActive
           ? "bg-white text-primary"
           : "text-white hover:bg-white hover:text-primary active:bg-white active:text-primary"
@@ -55,13 +53,9 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the dropdown whenever the route changes
   useEffect(() => setTradeOpen(false), [pathname]);
 
-  // Transparent bar only at the very top of the homepage; every other page
-  // (and any scrolled position) gets the solid highlighted bar.
   const solid = scrolled || pathname !== "/";
-
   const tradeActive = TRADE_CHILDREN.some((c) => c.href === pathname);
 
   return (
@@ -70,9 +64,12 @@ export function SiteHeader() {
         solid ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className={`mx-auto flex max-w-7xl items-center pl-4 pr-6 transition-all duration-300 ${
-        solid ? "py-2 gap-x-6" : "py-3 gap-x-5"
-      }`}>
+      <div
+        className={`mx-auto flex max-w-7xl items-center justify-between transition-all duration-300 ${
+          solid ? "px-6 py-2" : "px-6 py-3"
+        }`}
+      >
+        {/* Logo — shrinks on scroll */}
         <Link
           href="/"
           className="inline-flex shrink-0 items-center rounded-2xl bg-white shadow-lg ring-1 ring-black/5 transition-all duration-300"
@@ -80,19 +77,25 @@ export function SiteHeader() {
           <ImgWithFallback
             src="/images/logos/miictf-logo.png"
             alt="MIICTF logo"
-            className={`w-auto transition-all duration-300 ${solid ? "h-10 px-3 py-2 sm:h-12" : "h-16 px-5 py-3 sm:h-20"}`}
+            className={`w-auto transition-all duration-300 ${
+              solid ? "h-10 px-3 py-2 sm:h-12" : "h-14 px-4 py-2 sm:h-16"
+            }`}
             fallback={
-              <span className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
-                solid ? "text-xl px-3 py-2" : "text-3xl px-5 py-3"
-              }`}>
+              <span
+                className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
+                  solid ? "text-lg px-3 py-2" : "text-2xl px-4 py-2"
+                }`}
+              >
                 MIICTF
               </span>
             }
           />
         </Link>
-        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-3" : "gap-x-2"}`}>
+
+        {/* Nav — fills the middle, items spread evenly */}
+        <nav className="flex flex-1 items-center justify-center gap-x-4 px-4">
           {NAV_BEFORE.map((item) => (
-            <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
+            <NavLink key={item.href} {...item} pathname={pathname} />
           ))}
 
           {/* Trade & Investment dropdown */}
@@ -105,9 +108,7 @@ export function SiteHeader() {
               type="button"
               onClick={() => setTradeOpen((o) => !o)}
               aria-expanded={tradeOpen}
-              className={`flex items-center gap-1 whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-                solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
-              } ${
+              className={`flex items-center gap-1 whitespace-nowrap rounded-[20px] px-3 py-1.5 text-sm font-bold tracking-wide transition-colors ${
                 tradeActive
                   ? "bg-white text-primary"
                   : "text-white hover:bg-white hover:text-primary"
@@ -144,27 +145,23 @@ export function SiteHeader() {
           </div>
 
           {NAV_AFTER.map((item) => (
-            <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
+            <NavLink key={item.href} {...item} pathname={pathname} />
           ))}
         </nav>
 
-        {/* Auth actions pinned far right, visually distinct from nav tabs */}
-        <div className={`ml-auto flex shrink-0 items-center transition-all duration-300 ${solid ? "gap-2" : "gap-3"}`}>
+        {/* Auth — pinned right */}
+        <div className="flex shrink-0 items-center gap-3">
           <Button
-            variant="ghost"
+            variant="outline"
             size="sm"
-            className={`whitespace-nowrap rounded-[20px] border border-white font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
-              solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
-            }`}
+            className="whitespace-nowrap rounded-[20px] border-white px-4 py-1.5 text-sm font-bold tracking-wide text-white hover:bg-white hover:text-primary"
             render={<Link href="/login" />}
           >
             Login
           </Button>
           <Button
             size="sm"
-            className={`whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-              solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
-            }`}
+            className="whitespace-nowrap rounded-[20px] px-4 py-1.5 text-sm font-bold tracking-wide"
             render={<Link href="/register" />}
           >
             Register
