@@ -211,7 +211,7 @@ function CardGrid({ section }: { section: PageSection }) {
 
   if (variant === "committee") {
     return (
-      <section className="px-4 py-16">
+      <section className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           {section.title ? (
             <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
@@ -229,27 +229,40 @@ function CardGrid({ section }: { section: PageSection }) {
             }`}
           >
             {cards.map((card, i) => (
-              <Card key={i} className="text-center">
+              <Card
+                key={i}
+                className={`text-center transition-shadow hover:shadow-lg ${
+                  i % 2 === 0
+                    ? "border-t-4 border-t-primary"
+                    : "border-t-4 border-t-accent"
+                }`}
+              >
                 <CardHeader>
                   {card.image ? (
                     <ImgWithFallback
                       src={card.image}
                       alt={card.title}
-                      className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top"
+                      className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top ring-4 ring-primary/20"
                       fallback={
-                        <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-secondary text-3xl font-bold text-primary">
+                        <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
+                          i % 2 === 0 ? "bg-primary" : "bg-accent"
+                        }`}>
                           {card.title.charAt(0)}
                         </div>
                       }
                     />
                   ) : (
-                    <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-secondary text-3xl font-bold text-primary">
+                    <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
+                      i % 2 === 0 ? "bg-primary" : "bg-accent"
+                    }`}>
                       {card.title.charAt(0)}
                     </div>
                   )}
                   <CardTitle className="text-base">{card.title}</CardTitle>
                   {card.role ? (
-                    <CardDescription>{card.role}</CardDescription>
+                    <CardDescription className="font-semibold text-accent">
+                      {card.role}
+                    </CardDescription>
                   ) : null}
                 </CardHeader>
                 {card.description ? (
