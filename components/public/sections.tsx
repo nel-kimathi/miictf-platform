@@ -153,6 +153,7 @@ function CardGrid({ section }: { section: PageSection }) {
   const variant = m.variant as string | undefined;
 
   if (variant === "leadership") {
+    const linkHref = m.linkHref as string | undefined;
     return (
       <section className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-5xl">
@@ -167,39 +168,60 @@ function CardGrid({ section }: { section: PageSection }) {
             </p>
           ) : null}
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center rounded-xl bg-primary p-6 text-center text-primary-foreground"
-              >
-                {card.image ? (
-                  <ImgWithFallback
-                    src={card.image}
-                    alt={card.title}
-                    className={`mb-4 h-40 w-40 rounded-full object-cover object-top ring-4 sm:h-44 sm:w-44 ${
-                      card.imageBg === "white"
-                        ? "bg-white ring-white/70"
-                        : "ring-primary-foreground/20"
-                    }`}
-                    fallback={
-                      <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
-                        {card.title.charAt(0)}
-                      </div>
-                    }
-                  />
-                ) : (
-                  <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
-                    {card.title.charAt(0)}
-                  </div>
-                )}
-                <h3 className="font-heading text-lg font-semibold">{card.title}</h3>
-                {card.role ? (
-                  <p className="mt-1 text-sm text-primary-foreground/80">
-                    {card.role}
-                  </p>
-                ) : null}
-              </div>
-            ))}
+            {cards.map((card, i) => {
+              const cardInner = (
+                <>
+                  {card.image ? (
+                    <ImgWithFallback
+                      src={card.image}
+                      alt={card.title}
+                      className={`mb-4 h-40 w-40 rounded-full object-cover object-top ring-4 sm:h-44 sm:w-44 ${
+                        card.imageBg === "white"
+                          ? "bg-white ring-white/70"
+                          : "ring-primary-foreground/20"
+                      }`}
+                      fallback={
+                        <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
+                          {card.title.charAt(0)}
+                        </div>
+                      }
+                    />
+                  ) : (
+                    <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
+                      {card.title.charAt(0)}
+                    </div>
+                  )}
+                  <h3 className="font-heading text-lg font-semibold">{card.title}</h3>
+                  {card.role ? (
+                    <p className="mt-1 text-sm text-primary-foreground/80">
+                      {card.role}
+                    </p>
+                  ) : null}
+                  {card.description ? (
+                    <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                      {card.description}
+                    </p>
+                  ) : null}
+                </>
+              );
+
+              return linkHref ? (
+                <Link
+                  key={i}
+                  href={linkHref}
+                  className="flex flex-col items-center rounded-xl bg-primary p-6 text-center text-primary-foreground transition-shadow hover:shadow-lg"
+                >
+                  {cardInner}
+                </Link>
+              ) : (
+                <div
+                  key={i}
+                  className="flex flex-col items-center rounded-xl bg-primary p-6 text-center text-primary-foreground"
+                >
+                  {cardInner}
+                </div>
+              );
+            })}
           </div>
           <div className="flex justify-center">
             <CtaLinks cta={m.cta ? [m.cta] : undefined} />
@@ -210,8 +232,9 @@ function CardGrid({ section }: { section: PageSection }) {
   }
 
   if (variant === "committee") {
+    const anchorId = m.anchorId as string | undefined;
     return (
-      <section className="bg-secondary/60 px-4 py-16">
+      <section id={anchorId} className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           {section.title ? (
             <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">

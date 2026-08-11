@@ -58,21 +58,25 @@ const pages: PageSeed[] = [
         subtitle: "The team championing MIICTF",
         metadata: {
           variant: "leadership",
+          linkHref: "/about#organising",
           cards: [
             {
               title: "H.E. Isaac Mutuma M'Ethingia",
               role: "Governor, Meru County",
+              description: "Championing Meru's transformation into a premier investment destination through strategic partnerships and infrastructure development.",
               image: "/images/leadership/governor.png",
               imageBg: "white",
             },
             {
               title: "Prof. Romanus Odhiambo, Ph.D.",
               role: "Vice Chancellor, MKU",
+              description: "Leading academic innovation and research partnerships that drive the conference's thought leadership agenda.",
               image: "/images/leadership/vice-chancellor.webp",
             },
             {
               title: "Mr. Joshua K. Mungania",
               role: "Chairman MCCI (Meru Chapter)",
+              description: "Connecting the private sector with investment opportunities and championing trade facilitation across the region.",
               image: "/images/leadership/chairman.jpeg",
             },
           ],
@@ -185,6 +189,54 @@ const pages: PageSeed[] = [
           cards: [
             { title: "Mission", description: "To catalyse investment and trade for inclusive economic growth." },
             { title: "Vision", description: "A thriving investment destination with globally connected enterprises." },
+          ],
+        },
+      },
+      {
+        key: "leadership",
+        order: 3,
+        title: "Our Leadership",
+        subtitle: "The team championing MIICTF",
+        metadata: {
+          variant: "leadership",
+          cards: [
+            {
+              title: "H.E. Isaac Mutuma M'Ethingia",
+              role: "Governor, Meru County",
+              description: "Championing Meru's transformation into a premier investment destination through strategic partnerships and infrastructure development. Under his leadership, the county has prioritised investment in agriculture, tourism and trade infrastructure.",
+              image: "/images/leadership/governor.png",
+              imageBg: "white",
+            },
+            {
+              title: "Prof. Romanus Odhiambo, Ph.D.",
+              role: "Vice Chancellor, MKU",
+              description: "Leading academic innovation and research partnerships that drive the conference's thought leadership agenda. Prof. Odhiambo brings deep expertise in higher education and international collaboration.",
+              image: "/images/leadership/vice-chancellor.webp",
+            },
+            {
+              title: "Mr. Joshua K. Mungania",
+              role: "Chairman MCCI (Meru Chapter)",
+              description: "Connecting the private sector with investment opportunities and championing trade facilitation across the region. Mr. Mungania represents the interests of Meru's business community.",
+              image: "/images/leadership/chairman.jpeg",
+            },
+          ],
+        },
+      },
+      {
+        key: "committee",
+        order: 4,
+        title: "Organising Committee",
+        subtitle: "The people making it happen",
+        metadata: {
+          variant: "committee",
+          anchorId: "organising",
+          cards: [
+            { title: "Dr. Mary Njagi", role: "Committee Chairperson", description: "Leading the organising committee with extensive experience in event management and trade facilitation." },
+            { title: "Mr. Peter Mwenda", role: "Logistics Coordinator", description: "Overseeing all logistical arrangements including venue, transport, and accommodation." },
+            { title: "Ms. Grace Kiogora", role: "Sponsorship & Partnerships", description: "Managing sponsor relations, partnership development, and brand activations." },
+            { title: "Mr. James Munene", role: "Programme Director", description: "Curating the conference programme, speaker coordination, and session scheduling." },
+            { title: "Dr. Faith Mwikali", role: "Delegate Relations", description: "Managing delegate registration, communications, and overall delegate experience." },
+            { title: "Mr. Stephen Mutuma", role: "Exhibition Manager", description: "Coordinating exhibitor registrations, booth allocations, and trade fair operations." },
           ],
         },
       },
