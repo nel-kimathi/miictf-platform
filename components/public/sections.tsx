@@ -316,11 +316,11 @@ function EventList({ section }: { section: PageSection }) {
   }[] = m.events ?? [];
 
   const year = 2026;
-  const month = 5; // June (0-indexed)
+  const month = 10; // November (0-indexed)
   const monthName = new Date(year, month).toLocaleString("en-US", { month: "long" });
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const eventDays = [25, 26, 27];
+  const eventDays = [25, 26, 27, 28];
 
   const blanks = Array.from({ length: firstDay }, (_, i) => i);
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);

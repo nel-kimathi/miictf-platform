@@ -39,8 +39,9 @@ const pages: PageSeed[] = [
         title: "Meru International Investment Conference & Trade Fair",
         subtitle: "Unlocking investment and trade opportunities in Meru",
         body: "MIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
+        imageUrl: "/images/hero/tea-harvesting.jpeg",
         metadata: {
-          badge: "June 25 – 27, 2026 · Meru, Kenya",
+          badge: "November 25 – 28, 2026",
           cta: [
             { label: "Discover More", href: "/about" },
             { label: "Register to Attend", href: "/register" },
@@ -58,17 +59,17 @@ const pages: PageSeed[] = [
             {
               title: "H.E. Isaac Mutuma M'Ethingia",
               role: "Governor, Meru County",
-              image: "/images/leadership/governor.jpg",
+              image: "/images/leadership/governor.png",
             },
             {
               title: "Prof. Romanus Odhiambo, Ph.D.",
               role: "Vice Chancellor, MKU",
-              image: "/images/leadership/vice-chancellor.jpg",
+              image: "/images/leadership/vice-chancellor.webp",
             },
             {
               title: "Mr. Joshua K. Mungania",
               role: "Chairman MCCI (Meru Chapter)",
-              image: "/images/leadership/chairman.jpg",
+              image: "/images/leadership/chairman.jpeg",
             },
           ],
         },
@@ -78,7 +79,7 @@ const pages: PageSeed[] = [
         order: 2,
         title: "Meru County: The Land of Prosperity",
         body: "Meru is a highland County nestled on the fertile slopes of Mount Kenya in the Eastern Region. Spanning 7,003 sq km with a population of 1.5 million, it serves as a strategic gateway between Nairobi and the Northern Frontier.\n\nEconomic & Social Development\nMeru has experienced rapid economic growth, driven by a highly educated populace and a diverse economic base.\n\nAgriculture & Business: A global leader in Miraa (Khat), Macadamia, and Coffee production, alongside Tea, Bananas, Avocado, Tourism, Trade & Industry.",
-        imageUrl: "/images/meru-county.jpg",
+        imageUrl: "/images/sections/meru-county.png",
         metadata: {
           cta: [{ label: "About us", href: "/about" }],
         },
