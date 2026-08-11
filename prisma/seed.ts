@@ -60,6 +60,7 @@ const pages: PageSeed[] = [
               title: "H.E. Isaac Mutuma M'Ethingia",
               role: "Governor, Meru County",
               image: "/images/leadership/governor.png",
+              imageBg: "white",
             },
             {
               title: "Prof. Romanus Odhiambo, Ph.D.",

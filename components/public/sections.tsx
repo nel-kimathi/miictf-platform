@@ -148,6 +148,7 @@ function CardGrid({ section }: { section: PageSection }) {
     role?: string;
     description?: string;
     image?: string;
+    imageBg?: string;
   }[] = m.cards ?? [];
   const variant = m.variant as string | undefined;
 
@@ -175,15 +176,19 @@ function CardGrid({ section }: { section: PageSection }) {
                   <ImgWithFallback
                     src={card.image}
                     alt={card.title}
-                    className="mb-4 h-28 w-28 rounded-full object-cover ring-4 ring-primary-foreground/20"
+                    className={`mb-4 h-40 w-40 rounded-full object-cover object-top ring-4 sm:h-44 sm:w-44 ${
+                      card.imageBg === "white"
+                        ? "bg-white ring-white/70"
+                        : "ring-primary-foreground/20"
+                    }`}
                     fallback={
-                      <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-primary-foreground/20 text-3xl font-bold text-primary-foreground">
+                      <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
                         {card.title.charAt(0)}
                       </div>
                     }
                   />
                 ) : (
-                  <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-primary-foreground/20 text-3xl font-bold text-primary-foreground">
+                  <div className="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-primary-foreground/20 text-4xl font-bold text-primary-foreground sm:h-44 sm:w-44">
                     {card.title.charAt(0)}
                   </div>
                 )}

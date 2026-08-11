@@ -24,7 +24,7 @@ export default async function NewsDetailPage({
   if (!item) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12">
+    <article className="mx-auto max-w-3xl px-4 pb-12 pt-28">
       <Link href="/news" className="text-sm text-primary hover:underline">
         ← Back to News & Updates
       </Link>
