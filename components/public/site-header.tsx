@@ -29,35 +29,33 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const reveal = scrolled
-    ? "translate-y-0 opacity-100"
-    : "pointer-events-none -translate-y-2 opacity-0";
+  // Transparent bar only at the very top of the homepage; every other page
+  // (and any scrolled position) gets the solid highlighted bar.
+  const solid = scrolled || pathname !== "/";
 
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
+        solid ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
         <Link
           href="/"
-          className="inline-flex items-center rounded-2xl bg-white px-3 py-2 shadow-sm"
+          className="inline-flex items-center rounded-2xl bg-white px-4 py-2.5 shadow-sm"
         >
           <ImgWithFallback
             src="/images/logos/miictf-logo.png"
             alt="MIICTF logo"
-            className="h-10 w-auto"
+            className="h-14 w-auto"
             fallback={
-              <span className="font-heading text-xl font-bold tracking-tight text-primary">
+              <span className="font-heading text-2xl font-bold tracking-tight text-primary">
                 MIICTF
               </span>
             }
           />
         </Link>
-        <nav
-          className={`flex flex-1 flex-wrap items-center gap-x-1 gap-y-1 transition-all duration-300 ${reveal}`}
-        >
+        <nav className="flex flex-1 flex-wrap items-center gap-x-1 gap-y-1">
           {NAV.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -75,9 +73,7 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <div
-          className={`flex items-center gap-2 transition-all duration-300 ${reveal}`}
-        >
+        <div className="flex items-center gap-2">
           <Button
             variant="ghost"
             size="sm"
