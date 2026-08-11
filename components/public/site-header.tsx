@@ -71,7 +71,7 @@ export function SiteHeader() {
       }`}
     >
       <div className={`mx-auto flex max-w-7xl items-center pl-4 pr-6 transition-all duration-300 ${
-        solid ? "py-2 gap-x-6" : "py-4 gap-x-5"
+        solid ? "py-2 gap-x-8" : "py-4 gap-x-6"
       }`}>
         <Link
           href="/"
@@ -90,7 +90,7 @@ export function SiteHeader() {
             }
           />
         </Link>
-        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-3" : "gap-x-1.5"}`}>
+        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-5" : "gap-x-2"}`}>
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
@@ -149,7 +149,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Auth actions pinned far right, visually distinct from nav tabs */}
-        <div className="ml-auto flex shrink-0 items-center gap-3">
+        <div className={`ml-auto flex shrink-0 items-center transition-all duration-300 ${solid ? "gap-4" : "gap-3"}`}>
           <Button
             variant="ghost"
             size="sm"
