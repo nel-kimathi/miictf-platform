@@ -152,9 +152,9 @@ export function SiteHeader() {
         {/* Auth — pinned right */}
         <div className="flex shrink-0 items-center gap-3">
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
-            className="whitespace-nowrap rounded-[20px] border-white px-4 py-1.5 text-sm font-bold tracking-wide text-white hover:bg-white hover:text-primary"
+            className="whitespace-nowrap rounded-[20px] border border-white/70 px-4 py-1.5 text-sm font-bold tracking-wide text-white hover:bg-white hover:text-primary"
             render={<Link href="/login" />}
           >
             Login
