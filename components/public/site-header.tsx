@@ -30,8 +30,8 @@ function NavLink({ href, label, pathname, solid }: { href: string; label: string
   return (
     <Link
       href={href}
-      className={`rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-        solid ? "px-3 py-1 text-sm" : "px-4 py-2 text-base"
+      className={`whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+        solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
       } ${
         isActive
           ? "bg-white text-primary"
@@ -71,7 +71,7 @@ export function SiteHeader() {
       }`}
     >
       <div className={`mx-auto flex max-w-7xl items-center pl-4 pr-6 transition-all duration-300 ${
-        solid ? "py-2 gap-x-8" : "py-4 gap-x-6"
+        solid ? "py-2 gap-x-6" : "py-3 gap-x-5"
       }`}>
         <Link
           href="/"
@@ -90,7 +90,7 @@ export function SiteHeader() {
             }
           />
         </Link>
-        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-5" : "gap-x-2"}`}>
+        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-3" : "gap-x-2"}`}>
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
@@ -105,8 +105,8 @@ export function SiteHeader() {
               type="button"
               onClick={() => setTradeOpen((o) => !o)}
               aria-expanded={tradeOpen}
-              className={`flex items-center gap-1 rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-                solid ? "px-3 py-1 text-sm" : "px-4 py-2 text-base"
+              className={`flex items-center gap-1 whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+                solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
               } ${
                 tradeActive
                   ? "bg-white text-primary"
@@ -149,12 +149,12 @@ export function SiteHeader() {
         </nav>
 
         {/* Auth actions pinned far right, visually distinct from nav tabs */}
-        <div className={`ml-auto flex shrink-0 items-center transition-all duration-300 ${solid ? "gap-4" : "gap-3"}`}>
+        <div className={`ml-auto flex shrink-0 items-center transition-all duration-300 ${solid ? "gap-2" : "gap-3"}`}>
           <Button
             variant="ghost"
             size="sm"
-            className={`rounded-[20px] border border-white font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
-              solid ? "px-3 py-1 text-sm" : "px-5 py-2 text-base"
+            className={`whitespace-nowrap rounded-[20px] border border-white font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
+              solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
             }`}
             render={<Link href="/login" />}
           >
@@ -162,8 +162,8 @@ export function SiteHeader() {
           </Button>
           <Button
             size="sm"
-            className={`rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
-              solid ? "px-3 py-1 text-sm" : "px-5 py-2 text-base"
+            className={`whitespace-nowrap rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+              solid ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
             }`}
             render={<Link href="/register" />}
           >
