@@ -14,11 +14,11 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: "MIICTF — Meru International Investment Conference & Trade Fair",
-    template: "%s | MIICTF",
+    default: "MAIICTF — Meru International Investment Conference & Trade Fair",
+    template: "%s | MAIICTF",
   },
   description:
-    "The Meru International Investment Conference & Trade Fair (MIICTF) — connecting investors, government and business to opportunities in Meru.",
+    "The Meru International Investment Conference & Trade Fair (MAIICTF) — connecting investors, government and business to opportunities in Meru.",
 };
 
 export default function RootLayout({

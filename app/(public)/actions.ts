@@ -62,7 +62,7 @@ export async function submitContact(
   try {
     await sendMail({
       to,
-      subject: `[MIICTF contact] ${subject}`,
+      subject: `[MAIICTF contact] ${subject}`,
       html: `<p><strong>From:</strong> ${name} &lt;${email}&gt;</p><p>${message.replace(
         /\n/g,
         "<br/>"

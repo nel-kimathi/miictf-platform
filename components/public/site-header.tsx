@@ -76,7 +76,7 @@ export function SiteHeader() {
         >
           <ImgWithFallback
             src="/images/logos/miictf-logo.png"
-            alt="MIICTF logo"
+            alt="MAIICTF logo"
             className={`w-auto transition-all duration-300 ${
               solid ? "h-10 px-3 py-2 sm:h-12" : "h-14 px-4 py-2 sm:h-16"
             }`}
@@ -86,7 +86,7 @@ export function SiteHeader() {
                   solid ? "text-lg px-3 py-2" : "text-2xl px-4 py-2"
                 }`}
               >
-                MIICTF
+                MAIICTF
               </span>
             }
           />

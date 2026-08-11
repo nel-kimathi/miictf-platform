@@ -41,7 +41,7 @@ const pages: PageSeed[] = [
         order: 0,
         title: "Meru Annual International Investors Conference and Trade Fair",
         subtitle: "Unlocking investment and trade opportunities in Meru",
-        body: "MIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
+        body: "MAIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
         imageUrl: "/images/hero/tea-harvesting.jpeg",
         metadata: {
           badge: "November 25 – 28, 2026",
@@ -55,7 +55,7 @@ const pages: PageSeed[] = [
         key: "leadership",
         order: 1,
         title: "Our Leadership",
-        subtitle: "The team championing MIICTF",
+        subtitle: "The team championing MAIICTF",
         metadata: {
           variant: "leadership",
           linkHref: "/about#leadership",
@@ -111,7 +111,7 @@ const pages: PageSeed[] = [
         key: "committee",
         order: 4,
         title: "Organising Committee",
-        subtitle: "Key representatives driving MIICTF",
+        subtitle: "Key representatives driving MAIICTF",
         metadata: {
           variant: "committee",
           cards: [
@@ -167,19 +167,19 @@ const pages: PageSeed[] = [
   },
   {
     slug: "about",
-    title: "About MIICTF",
+    title: "About MAIICTF",
     sections: [
       {
         key: "hero",
         order: 0,
-        title: "About MIICTF",
+        title: "About MAIICTF",
         subtitle: "A platform for investment, trade and partnerships",
       },
       {
         key: "body",
         order: 1,
         title: "Our Story",
-        body: "The Meru International Investment Conference & Trade Fair (MIICTF) was established to position Meru as a leading investment destination. The conference convenes government, investors, development partners, SMEs and the diaspora to explore opportunities and close deals.",
+        body: "The Meru International Investment Conference & Trade Fair (MAIICTF) was established to position Meru as a leading investment destination. The conference convenes government, investors, development partners, SMEs and the diaspora to explore opportunities and close deals.",
       },
       {
         key: "mission",
@@ -196,7 +196,7 @@ const pages: PageSeed[] = [
         key: "leadership",
         order: 3,
         title: "Our Leadership",
-        subtitle: "The team championing MIICTF",
+        subtitle: "The team championing MAIICTF",
         metadata: {
           variant: "leadership",
           anchorId: "leadership",
@@ -297,7 +297,7 @@ const pages: PageSeed[] = [
       {
         key: "body",
         order: 1,
-        title: "Exhibit at MIICTF",
+        title: "Exhibit at MAIICTF",
         body: "The trade fair gives exhibitors direct access to thousands of delegates, buyers and investors. Booths are available in themed exhibition halls across multiple sizes and categories.",
       },
       {
@@ -355,7 +355,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "Sponsors & Partners",
-        subtitle: "Partner with MIICTF",
+        subtitle: "Partner with MAIICTF",
       },
       {
         key: "tiers",
@@ -387,7 +387,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "News & Updates",
-        subtitle: "Latest announcements from the MIICTF secretariat",
+        subtitle: "Latest announcements from the MAIICTF secretariat",
       },
     ],
   },
@@ -407,7 +407,7 @@ const pages: PageSeed[] = [
         title: "FAQs",
         metadata: {
           items: [
-            { question: "Who can attend MIICTF?", answer: "Investors, business owners, SMEs, government officials, development partners and the general public." },
+            { question: "Who can attend MAIICTF?", answer: "Investors, business owners, SMEs, government officials, development partners and the general public." },
             { question: "How do I register?", answer: "Use the Register page to create an account as a delegate, sponsor or exhibitor. You will receive a verification email to activate your account." },
             { question: "How do I book an exhibition booth?", answer: "Register as an exhibitor. Booth allocation is managed by the secretariat through the exhibitor portal." },
             { question: "How can my organisation sponsor the event?", answer: "Register as a sponsor and the partnerships team will contact you with package details." },
@@ -424,7 +424,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "Contact Us",
-        subtitle: "Get in touch with the MIICTF secretariat",
+        subtitle: "Get in touch with the MAIICTF secretariat",
       },
       {
         key: "details",
@@ -442,10 +442,10 @@ const pages: PageSeed[] = [
 
 const newsItems = [
   {
-    title: "Welcome to the MIICTF digital platform",
+    title: "Welcome to the MAIICTF digital platform",
     slug: "welcome-to-the-miictf-digital-platform",
     excerpt: "Register as a delegate, sponsor or exhibitor and follow conference updates here.",
-    content: "The MIICTF digital platform is now live. Delegates, sponsors and exhibitors can register online, receive announcements and access conference information in one place.",
+    content: "The MAIICTF digital platform is now live. Delegates, sponsors and exhibitors can register online, receive announcements and access conference information in one place.",
     category: "Announcement",
     status: "PUBLISHED" as const,
     publishedAt: new Date(),
@@ -463,7 +463,7 @@ const newsItems = [
     title: "Sponsorship packages available",
     slug: "sponsorship-packages-available",
     excerpt: "Platinum, Gold and Silver sponsorship packages are now available.",
-    content: "Organisations interested in sponsoring MIICTF can register as sponsors through the platform. The partnerships team will follow up with package details.",
+    content: "Organisations interested in sponsoring MAIICTF can register as sponsors through the platform. The partnerships team will follow up with package details.",
     category: "Sponsorship",
     status: "PUBLISHED" as const,
     publishedAt: new Date(),

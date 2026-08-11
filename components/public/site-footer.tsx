@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-heading text-lg font-bold">MIICTF</p>
+          <p className="font-heading text-lg font-bold">MAIICTF</p>
           <p className="mt-2 text-sm text-primary-foreground/80">
             Meru International Investment Conference &amp; Trade Fair —
             connecting investors, government and business to opportunities in
@@ -40,7 +40,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/20 py-4 text-center text-xs text-primary-foreground/70">
-        © {new Date().getFullYear()} MIICTF. All rights reserved.
+        © {new Date().getFullYear()} MAIICTF. All rights reserved.
       </div>
     </footer>
   );
