@@ -154,8 +154,9 @@ function CardGrid({ section }: { section: PageSection }) {
 
   if (variant === "leadership") {
     const linkHref = m.linkHref as string | undefined;
+    const anchorId = m.anchorId as string | undefined;
     return (
-      <section className="bg-secondary/60 px-4 py-16">
+      <section id={anchorId} className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-5xl">
           {section.title ? (
             <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
@@ -291,6 +292,49 @@ function CardGrid({ section }: { section: PageSection }) {
                 {card.description ? (
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
+                      {card.description}
+                    </p>
+                  </CardContent>
+                ) : null}
+              </Card>
+            ))}
+          </div>
+          <div className="flex justify-center">
+            <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "mission" || section.key === "mission") {
+    return (
+      <section className="px-4 py-16">
+        <div className="mx-auto max-w-4xl">
+          {section.title ? (
+            <h2 className="font-heading text-center text-3xl font-bold text-accent sm:text-4xl">
+              {section.title}
+            </h2>
+          ) : null}
+          {section.subtitle ? (
+            <p className="mt-2 text-center text-muted-foreground">
+              {section.subtitle}
+            </p>
+          ) : null}
+          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+            {cards.map((card, i) => (
+              <Card
+                key={i}
+                className="border-t-4 border-t-accent text-center transition-shadow hover:shadow-lg"
+              >
+                <CardHeader className="items-center">
+                  <CardTitle className="text-xl font-bold text-accent">
+                    {card.title}
+                  </CardTitle>
+                </CardHeader>
+                {card.description ? (
+                  <CardContent>
+                    <p className="text-base leading-relaxed text-muted-foreground">
                       {card.description}
                     </p>
                   </CardContent>

@@ -58,7 +58,7 @@ const pages: PageSeed[] = [
         subtitle: "The team championing MIICTF",
         metadata: {
           variant: "leadership",
-          linkHref: "/about#organising",
+          linkHref: "/about#leadership",
           cards: [
             {
               title: "H.E. Isaac Mutuma M'Ethingia",
@@ -199,6 +199,7 @@ const pages: PageSeed[] = [
         subtitle: "The team championing MIICTF",
         metadata: {
           variant: "leadership",
+          anchorId: "leadership",
           cards: [
             {
               title: "H.E. Isaac Mutuma M'Ethingia",
