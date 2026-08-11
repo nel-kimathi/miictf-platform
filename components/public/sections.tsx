@@ -209,6 +209,67 @@ function CardGrid({ section }: { section: PageSection }) {
     );
   }
 
+  if (variant === "committee") {
+    return (
+      <section className="px-4 py-16">
+        <div className="mx-auto max-w-7xl">
+          {section.title ? (
+            <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
+              {section.title}
+            </h2>
+          ) : null}
+          {section.subtitle ? (
+            <p className="mt-2 text-center text-muted-foreground">
+              {section.subtitle}
+            </p>
+          ) : null}
+          <div
+            className={`mt-10 grid gap-6 sm:grid-cols-2 ${
+              cards.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+            }`}
+          >
+            {cards.map((card, i) => (
+              <Card key={i} className="text-center">
+                <CardHeader>
+                  {card.image ? (
+                    <ImgWithFallback
+                      src={card.image}
+                      alt={card.title}
+                      className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top"
+                      fallback={
+                        <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-secondary text-3xl font-bold text-primary">
+                          {card.title.charAt(0)}
+                        </div>
+                      }
+                    />
+                  ) : (
+                    <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-secondary text-3xl font-bold text-primary">
+                      {card.title.charAt(0)}
+                    </div>
+                  )}
+                  <CardTitle className="text-base">{card.title}</CardTitle>
+                  {card.role ? (
+                    <CardDescription>{card.role}</CardDescription>
+                  ) : null}
+                </CardHeader>
+                {card.description ? (
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      {card.description}
+                    </p>
+                  </CardContent>
+                ) : null}
+              </Card>
+            ))}
+          </div>
+          <div className="flex justify-center">
+            <CtaLinks cta={m.cta ? [m.cta] : undefined} />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="px-4 py-16">
       <div className="mx-auto max-w-7xl">
@@ -270,7 +331,7 @@ function TierCards({ section }: { section: PageSection }) {
             {section.subtitle}
           </p>
         ) : null}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tiers.map((tier, i) => (
             <Card key={i} className="border-t-4 border-t-accent">
               <CardHeader>
@@ -492,6 +553,7 @@ const RENDERERS: Record<
   body: RichSection,
   "meru-county": MeruCounty,
   leadership: CardGrid,
+  committee: CardGrid,
   mission: CardGrid,
   "opportunities-teaser": CardGrid,
   sectors: CardGrid,

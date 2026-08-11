@@ -8,11 +8,14 @@
  * NOTE: No real personal names, dates, emails or phone numbers are used —
  * values are deliberate placeholders for editors to replace.
  */
+import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { PrismaClient } from "../lib/generated/prisma/client";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
-const adapter = new PrismaMariaDb(process.env.DATABASE_URL ?? "");
+const rawUrl = process.env.DATABASE_URL ?? "";
+const url = rawUrl.replace(/^mysql:\/\//, "mariadb://");
+const adapter = new PrismaMariaDb(url);
 const prisma = new PrismaClient({ adapter });
 
 type SectionSeed = {
@@ -101,8 +104,25 @@ const pages: PageSeed[] = [
         },
       },
       {
-        key: "sponsorship-teaser",
+        key: "committee",
         order: 4,
+        title: "Organising Committee",
+        subtitle: "The people making it happen",
+        metadata: {
+          variant: "committee",
+          cards: [
+            { title: "Dr. Mary Njagi", role: "Committee Chairperson", description: "Leading the organising committee with extensive experience in event management and trade facilitation." },
+            { title: "Mr. Peter Mwenda", role: "Logistics Coordinator", description: "Overseeing all logistical arrangements including venue, transport, and accommodation." },
+            { title: "Ms. Grace Kiogora", role: "Sponsorship & Partnerships", description: "Managing sponsor relations, partnership development, and brand activations." },
+            { title: "Mr. James Munene", role: "Programme Director", description: "Curating the conference programme, speaker coordination, and session scheduling." },
+            { title: "Dr. Faith Mwikali", role: "Delegate Relations", description: "Managing delegate registration, communications, and overall delegate experience." },
+            { title: "Mr. Stephen Mutuma", role: "Exhibition Manager", description: "Coordinating exhibitor registrations, booth allocations, and trade fair operations." },
+          ],
+        },
+      },
+      {
+        key: "sponsorship-teaser",
+        order: 5,
         title: "Sponsorship Packages",
         subtitle: "Partner with us and put your brand at the centre",
         metadata: {
@@ -127,7 +147,7 @@ const pages: PageSeed[] = [
       },
       {
         key: "events-preview",
-        order: 5,
+        order: 6,
         title: "Scheduled Events",
         subtitle: "Key sessions and activities",
         metadata: {
