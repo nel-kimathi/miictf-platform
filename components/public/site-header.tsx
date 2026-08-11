@@ -90,7 +90,7 @@ export function SiteHeader() {
             }
           />
         </Link>
-        <nav className="flex items-center gap-x-1.5">
+        <nav className={`flex items-center transition-all duration-300 ${solid ? "gap-x-3" : "gap-x-1.5"}`}>
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
@@ -153,7 +153,7 @@ export function SiteHeader() {
           <Button
             variant="ghost"
             size="sm"
-            className={`rounded-[20px] font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
+            className={`rounded-[20px] border border-white font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
               solid ? "px-3 py-1 text-sm" : "px-5 py-2 text-base"
             }`}
             render={<Link href="/login" />}
