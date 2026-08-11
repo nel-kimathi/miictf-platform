@@ -262,11 +262,7 @@ function CardGrid({ section }: { section: PageSection }) {
               return (
                 <Card
                   key={i}
-                  className={`text-center transition-shadow hover:shadow-lg ${
-                    i % 2 === 0
-                      ? "border-t-4 border-t-primary"
-                      : "border-t-4 border-t-accent"
-                  }`}
+                  className="border-t-4 border-t-primary text-center transition-shadow hover:shadow-lg"
                 >
                   <CardHeader>
                     {card.image ? (
@@ -275,17 +271,13 @@ function CardGrid({ section }: { section: PageSection }) {
                         alt={card.title}
                         className="mx-auto mb-2 h-28 w-28 rounded-full object-cover object-top ring-4 ring-primary/20"
                         fallback={
-                          <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
-                            i % 2 === 0 ? "bg-primary" : "bg-accent"
-                          }`}>
+                          <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-primary text-3xl font-bold text-white">
                             {card.title.charAt(0)}
                           </div>
                         }
                       />
                     ) : (
-                      <div className={`mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full text-3xl font-bold text-white ${
-                        i % 2 === 0 ? "bg-primary" : "bg-accent"
-                      }`}>
+                      <div className="mx-auto mb-2 flex h-28 w-28 items-center justify-center rounded-full bg-primary text-3xl font-bold text-white">
                         {card.title.charAt(0)}
                       </div>
                     )}
