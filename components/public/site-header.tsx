@@ -138,12 +138,14 @@ export function SiteHeader() {
           {NAV_AFTER.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} />
           ))}
+        </nav>
 
-          {/* Auth actions inline with the nav tabs */}
+        {/* Auth actions pinned far right, visually distinct from nav tabs */}
+        <div className="ml-auto flex items-center gap-2 pl-6">
           <Button
             variant="ghost"
             size="sm"
-            className="ml-2 rounded-[20px] px-4 text-base font-bold tracking-wide text-white hover:bg-white hover:text-primary"
+            className="rounded-[20px] px-4 text-base font-bold tracking-wide text-white hover:bg-white hover:text-primary"
             render={<Link href="/login" />}
           >
             Login
@@ -155,7 +157,7 @@ export function SiteHeader() {
           >
             Register
           </Button>
-        </nav>
+        </div>
       </div>
     </header>
   );
