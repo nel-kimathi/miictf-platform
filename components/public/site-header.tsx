@@ -25,12 +25,14 @@ const NAV_AFTER = [
   { label: "Contact", href: "/contact" },
 ];
 
-function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
+function NavLink({ href, label, pathname, solid }: { href: string; label: string; pathname: string; solid: boolean }) {
   const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className={`rounded-[20px] px-4 py-2 text-base font-bold tracking-wide transition-colors ${
+      className={`rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+        solid ? "px-3 py-1 text-sm" : "px-4 py-2 text-base"
+      } ${
         isActive
           ? "bg-white text-primary"
           : "text-white hover:bg-white hover:text-primary active:bg-white active:text-primary"
@@ -68,17 +70,21 @@ export function SiteHeader() {
         solid ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 py-4 pl-4 pr-6">
+      <div className={`mx-auto flex max-w-7xl items-center gap-x-8 pl-4 pr-6 transition-all duration-300 ${
+        solid ? "py-2" : "py-4"
+      }`}>
         <Link
           href="/"
-          className="inline-flex items-center rounded-2xl bg-white px-5 py-3 shadow-lg ring-1 ring-black/5"
+          className="inline-flex shrink-0 items-center rounded-2xl bg-white shadow-lg ring-1 ring-black/5 transition-all duration-300"
         >
           <ImgWithFallback
             src="/images/logos/miictf-logo.png"
             alt="MIICTF logo"
-            className="h-16 w-auto sm:h-20"
+            className={`w-auto transition-all duration-300 ${solid ? "h-10 px-3 py-2 sm:h-12" : "h-16 px-5 py-3 sm:h-20"}`}
             fallback={
-              <span className="font-heading text-3xl font-bold tracking-tight text-primary">
+              <span className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
+                solid ? "text-xl px-3 py-2" : "text-3xl px-5 py-3"
+              }`}>
                 MIICTF
               </span>
             }
@@ -86,7 +92,7 @@ export function SiteHeader() {
         </Link>
         <nav className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
           {NAV_BEFORE.map((item) => (
-            <NavLink key={item.href} {...item} pathname={pathname} />
+            <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
 
           {/* Trade & Investment dropdown */}
@@ -99,7 +105,9 @@ export function SiteHeader() {
               type="button"
               onClick={() => setTradeOpen((o) => !o)}
               aria-expanded={tradeOpen}
-              className={`flex items-center gap-1 rounded-[20px] px-4 py-2 text-base font-bold tracking-wide transition-colors ${
+              className={`flex items-center gap-1 rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+                solid ? "px-3 py-1 text-sm" : "px-4 py-2 text-base"
+              } ${
                 tradeActive
                   ? "bg-white text-primary"
                   : "text-white hover:bg-white hover:text-primary"
@@ -136,23 +144,27 @@ export function SiteHeader() {
           </div>
 
           {NAV_AFTER.map((item) => (
-            <NavLink key={item.href} {...item} pathname={pathname} />
+            <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
         </nav>
 
         {/* Auth actions pinned far right, visually distinct from nav tabs */}
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-3">
           <Button
             variant="ghost"
             size="sm"
-            className="rounded-[20px] px-5 py-2 text-base font-bold tracking-wide text-white hover:bg-white hover:text-primary"
+            className={`rounded-[20px] font-bold tracking-wide text-white hover:bg-white hover:text-primary transition-all duration-300 ${
+              solid ? "px-3 py-1 text-sm" : "px-5 py-2 text-base"
+            }`}
             render={<Link href="/login" />}
           >
             Login
           </Button>
           <Button
             size="sm"
-            className="rounded-[20px] px-5 py-2 text-base font-bold tracking-wide"
+            className={`rounded-[20px] font-bold tracking-wide transition-all duration-300 ${
+              solid ? "px-3 py-1 text-sm" : "px-5 py-2 text-base"
+            }`}
             render={<Link href="/register" />}
           >
             Register
