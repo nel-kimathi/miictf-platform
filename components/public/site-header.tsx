@@ -68,7 +68,7 @@ export function SiteHeader() {
         solid ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 px-6 py-4">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 py-4 pl-4 pr-6">
         <Link
           href="/"
           className="inline-flex items-center rounded-2xl bg-white px-5 py-3 shadow-lg ring-1 ring-black/5"
@@ -84,7 +84,7 @@ export function SiteHeader() {
             }
           />
         </Link>
-        <nav className="flex flex-1 flex-wrap items-center gap-x-1.5 gap-y-1">
+        <nav className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} />
           ))}
@@ -141,7 +141,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Auth actions pinned far right, visually distinct from nav tabs */}
-        <div className="ml-auto flex items-center gap-3 pl-10">
+        <div className="ml-auto flex items-center gap-3">
           <Button
             variant="ghost"
             size="sm"
