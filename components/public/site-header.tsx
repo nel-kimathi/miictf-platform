@@ -70,8 +70,8 @@ export function SiteHeader() {
         solid ? "bg-primary/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className={`mx-auto flex max-w-7xl items-center gap-x-8 pl-4 pr-6 transition-all duration-300 ${
-        solid ? "py-2" : "py-4"
+      <div className={`mx-auto flex max-w-7xl items-center pl-4 pr-6 transition-all duration-300 ${
+        solid ? "py-2 gap-x-6" : "py-4 gap-x-5"
       }`}>
         <Link
           href="/"
@@ -90,7 +90,7 @@ export function SiteHeader() {
             }
           />
         </Link>
-        <nav className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+        <nav className="flex items-center gap-x-1.5">
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} solid={solid} />
           ))}
