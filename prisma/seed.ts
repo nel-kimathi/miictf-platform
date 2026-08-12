@@ -116,7 +116,7 @@ const pages: PageSeed[] = [
           variant: "committee",
           cards: [
             { title: "Dr. Julius Ithae", role: "Chairperson", description: "Representing Meru University of Science and Technology (MUST) as Chairperson of the Organising Committee.", image: "/images/committee/julius-ithae.jpg" },
-            { title: "Jackline Kanana", role: "Vice Chairperson", description: "Representing the County Government of Meru (MCG) as Vice Chairperson, overseeing trade facilitation.", image: "/images/committee/jacline-kanana.png" },
+            { title: "Jackline Kanana", role: "Vice Chairperson", description: "Representing the County Government of Meru (MCG) as Vice Chairperson, overseeing trade facilitation.", image: "/images/committee/jacline-kanana.png", zoom: "h-[140%] w-[140%] object-cover object-[center_10%]" },
             { title: "Patrick Kathurima", role: "Secretary", description: "Representing KNCCI – Meru Chapter as Secretary, coordinating chamber activities and member engagement.", image: "/images/committee/patrick-kathurima.jpg" },
             { title: "Martin Kiogora Mbui", role: "CEO, KNCCI Meru Chapter", description: "Leading the Kenya National Chamber of Commerce and Industry – Meru Chapter in private sector partnerships.", image: "/images/committee/martin-mbui.jpeg" },
             { title: "Kithinji Ruri", role: "Meru County Government", description: "Representing the Meru County Government in logistics, policy coordination and public sector alignment.", image: "/images/committee/kithinji-ruri.jpg" },

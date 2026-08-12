@@ -234,7 +234,7 @@ function CardGrid({ section }: { section: PageSection }) {
 
   if (variant === "committee") {
     const anchorId = m.anchorId as string | undefined;
-    const cardsMeta: { org?: string }[] = m.cards ?? [];
+    const cardsMeta: { org?: string; zoom?: string }[] = m.cards ?? [];
     return (
       <section id={anchorId} className="bg-secondary/60 px-4 py-16">
         <div className="mx-auto max-w-7xl">
@@ -259,6 +259,7 @@ function CardGrid({ section }: { section: PageSection }) {
                     : org?.includes("Meru")
                       ? "bg-accent/15 text-accent"
                       : "bg-muted text-muted-foreground";
+              const imgZoom = cardsMeta[i]?.zoom ?? "h-[120%] w-[120%] object-cover object-[center_15%]";
               return (
                 <Card
                   key={i}
@@ -270,7 +271,7 @@ function CardGrid({ section }: { section: PageSection }) {
                         <ImgWithFallback
                           src={card.image}
                           alt={card.title}
-                          className="h-[120%] w-[120%] object-cover object-[center_15%]"
+                          className={imgZoom}
                           fallback={
                             <div className="flex h-28 w-28 items-center justify-center bg-primary text-3xl font-bold text-white">
                               {card.title.charAt(0)}
