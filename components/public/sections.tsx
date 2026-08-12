@@ -270,7 +270,7 @@ function CardGrid({ section }: { section: PageSection }) {
                         <ImgWithFallback
                           src={card.image}
                           alt={card.title}
-                          className="h-[160%] w-[160%] object-cover object-[center_top] -mt-[15%]"
+                          className="h-[120%] w-[120%] object-cover object-[center_15%]"
                           fallback={
                             <div className="flex h-28 w-28 items-center justify-center bg-primary text-3xl font-bold text-white">
                               {card.title.charAt(0)}
