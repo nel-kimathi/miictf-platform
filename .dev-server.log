@@ -118,3 +118,27 @@
  ✓ Compiled / in 325ms
  GET / 200 in 3246ms
  GET /favicon.ico?favicon.0b3bf435.ico 200 in 848ms
+ GET / 200 in 2242ms
+ GET /images/committee/Patrick-Kubai.jpg 404 in 1450ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 891ms
+ ✓ Compiled in 1159ms
+ ○ Compiling / ...
+ ✓ Compiled / in 733ms
+ GET / 200 in 4988ms
+ GET / 200 in 2354ms
+ GET / 200 in 1292ms
+ GET / 200 in 1824ms
+ GET / 200 in 1425ms
+ GET / 200 in 1852ms
+ ✓ Compiled in 1102ms
+ GET / 200 in 1777ms
+ ○ Compiling / ...
+ ✓ Compiled / in 506ms
+ GET / 200 in 3448ms
+ GET / 200 in 2067ms
+ GET / 200 in 1979ms
+ GET / 200 in 1247ms
+ GET / 200 in 1853ms
+ GET / 200 in 1127ms
+ GET / 200 in 1997ms
+ GET / 200 in 1500ms
