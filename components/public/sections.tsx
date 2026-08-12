@@ -266,11 +266,11 @@ function CardGrid({ section }: { section: PageSection }) {
                 >
                   <CardHeader>
                     {card.image ? (
-                      <div className="mx-auto mb-2 h-28 w-28 overflow-hidden rounded-full ring-4 ring-primary/20">
+                      <div className="relative mx-auto mb-2 h-28 w-28 overflow-hidden rounded-full ring-4 ring-primary/20">
                         <ImgWithFallback
                           src={card.image}
                           alt={card.title}
-                          className="h-[140%] w-[140%] object-cover object-[center_20%] -ml-[20%] -mt-[5%]"
+                          className="h-full w-full object-cover object-[center_20%] scale-150"
                           fallback={
                             <div className="flex h-28 w-28 items-center justify-center bg-primary text-3xl font-bold text-white">
                               {card.title.charAt(0)}
