@@ -90,3 +90,27 @@
  GET /images/events/opening.jpg 404 in 1291ms
  GET /images/events/panel.jpg 404 in 1385ms
  GET /favicon.ico?favicon.0b3bf435.ico 200 in 497ms
+ GET / 200 in 1423ms
+ GET /images/events/trade-fair.jpg 404 in 1424ms
+ GET /images/events/opening.jpg 404 in 1517ms
+ GET /images/events/panel.jpg 404 in 1527ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 405ms
+ ✓ Compiled /faq in 181ms
+ GET /faq 200 in 683ms
+ ✓ Compiled /contact in 169ms
+ GET /contact 200 in 707ms
+ ✓ Compiled /sponsors-partners in 170ms
+ GET /sponsors-partners 200 in 615ms
+ ✓ Compiled /conference-programme in 159ms
+ GET /conference-programme 200 in 623ms
+ ✓ Compiled /about in 172ms
+ GET /about 200 in 783ms
+ GET / 200 in 341ms
+ GET /images/events/panel.jpg 404 in 583ms
+ GET /images/events/opening.jpg 404 in 605ms
+ GET /images/events/trade-fair.jpg 404 in 581ms
+ GET / 200 in 1013ms
+ GET /images/events/opening.jpg 404 in 1841ms
+ GET /images/events/panel.jpg 404 in 1823ms
+ GET /images/events/trade-fair.jpg 404 in 1814ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 619ms

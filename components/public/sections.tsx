@@ -402,7 +402,7 @@ function CardGrid({ section }: { section: PageSection }) {
 function TierCards({ section }: { section: PageSection }) {
   const m = meta(section);
   const tiers: { name: string; description?: string }[] = m.tiers ?? [];
-  const brands: { name: string }[] = m.brands ?? [];
+  const brands: { name: string; image?: string }[] = m.brands ?? [];
   return (
     <section className="bg-secondary/60 px-4 py-16">
       <div className="mx-auto max-w-7xl">
@@ -442,9 +442,23 @@ function TierCards({ section }: { section: PageSection }) {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
               {brands.map((b, i) => (
-                <span key={i} className="text-lg font-semibold text-muted-foreground/70">
-                  {b.name}
-                </span>
+                b.image ? (
+                  <ImgWithFallback
+                    key={i}
+                    src={b.image}
+                    alt={`${b.name} logo`}
+                    className="h-10 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                    fallback={
+                      <span className="text-lg font-semibold text-muted-foreground/70">
+                        {b.name}
+                      </span>
+                    }
+                  />
+                ) : (
+                  <span key={i} className="text-lg font-semibold text-muted-foreground/70">
+                    {b.name}
+                  </span>
+                )
               ))}
             </div>
           </div>

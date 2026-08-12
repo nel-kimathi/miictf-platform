@@ -1,16 +1,64 @@
-# Images folder guide
+# Image Placement Guide
 
-Drop image files here using the exact filenames below — the site picks them up automatically, no code changes needed.
+Drop the files listed below into the correct folder. File names must match exactly
+(except for case on Windows — but use the exact case for consistency).
 
-| Folder | Expected files | Used in |
-|---|---|---|
-| `hero/` | `tea-harvesting.jpeg` (wide, ~1920x800) ✅ added | Home page hero background |
-| `leadership/` | `governor.png` ✅, `vice-chancellor.webp` ✅, `chairman.jpeg` ✅ (square-ish portraits) | Home "Our Leadership" cards |
-| `sections/` | `meru-county.png` (landscape) ✅ added | Home "Meru County" section, right column |
-| `events/` | `opening.jpg`, `panel.jpg`, `trade-fair.jpg` (landscape) — still needed | Home "Scheduled Events" cards |
-| `logos/` | Sponsor/partner logos (PNG with transparent bg preferred) — still needed | "Join these brands" strip (wired in Phase 2) |
+---
 
-Tips:
-- `.jpg` for photos, `.png` for logos.
-- Keep files under ~500 KB each (compress at https://squoosh.app if needed).
-- Missing files degrade gracefully to placeholders — the site never breaks.
+## `images/committee/` — Organising Committee members (homepage)
+
+These appear on the **Home page** committee section (6 key members).
+
+| File name | Member |
+|---|---|
+| `julius-ithae.jpg` | Dr. Julius Ithae — Chairperson (MUST) |
+| `jackline-kanana.jpg` | Jackline Kanana — Vice Chairperson (MCG) |
+| `patrick-kathurima.jpg` | Patrick Kathurima — Secretary (KNCCI) |
+| `martin-mbui.jpg` | Martin Kiogora Mbui — CEO KNCCI |
+| `kithinji-ruri.jpg` | Kithinji Ruri — MCG |
+| `patrick-kubai.jpg` | Dr. Patrick Kinyua Kubai — MUST |
+
+All images should be **square** (at least 400×400 px). They render as circles.
+
+---
+
+## `images/brands/` — Past sponsor logos
+
+These appear in the "Join these brands" section on the homepage.
+
+| File name | Brand |
+|---|---|
+| `spotify.png` | Spotify |
+| `google.png` | Google |
+| `stripe.png` | Stripe |
+| `youtube.png` | YouTube |
+| `microsoft.png` | Microsoft |
+| `medium.png` | Medium |
+| `zoom.png` | Zoom |
+| `uber.png` | Uber |
+| `grab.png` | Grab |
+
+Use **transparent PNG** logos, ideally 200×60 px or similar landscape ratio.
+
+---
+
+## `images/events/` — Already added ✅
+
+| File name | Event |
+|---|---|
+| `opening-ceremony.jpg` | Opening Ceremony |
+| `panel-discussion.jpg` | Investor Panel Discussions |
+| `Trade Fair-exhibitions.jpg` | Trade Fair & Exhibitions |
+
+---
+
+## Other existing images (no action needed)
+
+- `images/hero/tea-harvesting.jpeg` ✅
+- `images/leadership/governor.png` ✅
+- `images/leadership/vice-chancellor.webp` ✅
+- `images/leadership/chairman.jpeg` ✅
+- `images/logos/miictf-logo.png` ✅
+- `images/sections/meru-county.png` ✅
+- `images/logos/mcg.png` ✅
+- `images/logos/KNCCI LOGO final V1.png` ✅
