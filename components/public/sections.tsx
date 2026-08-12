@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { PageSection } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { ImgWithFallback } from "@/components/public/img-with-fallback";
+import { BrandCarousel } from "@/components/public/brand-carousel";
 import {
   Card,
   CardContent,
@@ -405,7 +406,7 @@ function CardGrid({ section }: { section: PageSection }) {
 function TierCards({ section }: { section: PageSection }) {
   const m = meta(section);
   const tiers: { name: string; description?: string }[] = m.tiers ?? [];
-  const brands: { name: string; image?: string }[] = m.brands ?? [];
+  const brands: { name: string; image?: string; href?: string }[] = m.brands ?? [];
   return (
     <section className="bg-secondary/60 px-4 py-16">
       <div className="mx-auto max-w-7xl">
@@ -438,31 +439,13 @@ function TierCards({ section }: { section: PageSection }) {
         {brands.length > 0 ? (
           <div className="mt-16 text-center">
             <p className="font-heading text-2xl font-bold text-primary">
-              Join these brands
+              Our Partners
             </p>
             <p className="mt-2 text-muted-foreground">
-              We&apos;ve had the pleasure of working with some outstanding past sponsors.
+              Organisations partnering with us to make MAIICTF possible.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-              {brands.map((b, i) => (
-                b.image ? (
-                  <ImgWithFallback
-                    key={i}
-                    src={b.image}
-                    alt={`${b.name} logo`}
-                    className="h-10 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
-                    fallback={
-                      <span className="text-lg font-semibold text-muted-foreground/70">
-                        {b.name}
-                      </span>
-                    }
-                  />
-                ) : (
-                  <span key={i} className="text-lg font-semibold text-muted-foreground/70">
-                    {b.name}
-                  </span>
-                )
-              ))}
+            <div className="mt-8">
+              <BrandCarousel brands={brands} />
             </div>
           </div>
         ) : null}

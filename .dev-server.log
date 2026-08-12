@@ -294,3 +294,41 @@
  GET / 200 in 815ms
  GET / 200 in 912ms
  GET / 200 in 1212ms
+ ✓ Compiled in 1018ms
+ GET / 200 in 3842ms
+ GET /images/committee/kithinji-ruri.jpg 404 in 1627ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 551ms
+ ✓ Compiled in 700ms
+ ✓ Compiled in 1957ms
+ ✓ Compiled in 815ms
+ ○ Compiling / ...
+ ✓ Compiled / in 663ms
+ GET / 200 in 3616ms
+ GET / 200 in 2461ms
+ GET / 200 in 2429ms
+ GET / 200 in 1299ms
+ GET / 200 in 1534ms
+ GET / 200 in 1045ms
+ GET / 200 in 2124ms
+ GET / 200 in 3034ms
+ GET / 200 in 1772ms
+ ✓ Compiled in 7.9s
+ ✓ Compiled / in 402ms
+ GET / 200 in 2525ms
+ GET / 200 in 1041ms
+ GET / 200 in 1175ms
+ GET / 200 in 1016ms
+ GET / 200 in 1030ms
+ GET / 200 in 1057ms
+ GET / 200 in 1061ms
+ GET / 200 in 1160ms
+ GET / 200 in 1616ms
+ GET /images/brands/spotify.png 404 in 1622ms
+ GET /images/brands/google.png 404 in 1644ms
+ GET /images/brands/stripe.png 404 in 1743ms
+ GET /images/brands/microsoft.png 404 in 2021ms
+ GET /images/brands/youtube.png 404 in 2084ms
+ GET /images/brands/medium.png 404 in 1627ms
+ GET /images/brands/uber.png 404 in 1633ms
+ GET /images/brands/zoom.png 404 in 1669ms
+ GET /images/brands/grab.png 404 in 428ms
