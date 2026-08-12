@@ -404,7 +404,6 @@ const pages: PageSeed[] = [
       {
         key: "items",
         order: 1,
-        title: "FAQs",
         metadata: {
           items: [
             { question: "Who can attend MAIICTF?", answer: "Investors, business owners, SMEs, government officials, development partners and the general public." },

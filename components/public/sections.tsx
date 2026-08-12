@@ -499,7 +499,11 @@ function EventList({ section }: { section: PageSection }) {
                     src={event.image}
                     alt={event.title}
                     className="h-40 w-full object-cover"
-                    fallback={null}
+                    fallback={
+                      <div className="flex h-40 w-full items-center justify-center bg-primary/10 text-primary">
+                        <span className="text-sm font-semibold">Event Image</span>
+                      </div>
+                    }
                   />
                 ) : null}
                 <CardHeader>

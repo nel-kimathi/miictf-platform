@@ -18,3 +18,75 @@
  ○ Compiling /login ...
  ✓ Compiled /login in 2s
  GET /login 200 in 2624ms
+ GET / 200 in 1753ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 2.9s
+ GET /images/events/opening.jpg 404 in 3941ms
+ GET /images/events/trade-fair.jpg 404 in 3923ms
+ GET /images/events/panel.jpg 404 in 3931ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1159ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 1915ms
+ GET /about 200 in 875ms
+ ○ Compiling /investment-opportunities ...
+ ✓ Compiled /investment-opportunities in 1394ms
+ GET /investment-opportunities 200 in 1812ms
+ ○ Compiling /register ...
+ ✓ Compiled /register in 947ms
+ GET /register 200 in 1176ms
+ GET /investment-opportunities 200 in 493ms
+ ○ Compiling /conference-programme ...
+ ✓ Compiled /conference-programme in 947ms
+ GET /conference-programme 200 in 1279ms
+ ○ Compiling /sponsors-partners ...
+ ✓ Compiled /sponsors-partners in 1088ms
+ GET /sponsors-partners 200 in 1388ms
+ ○ Compiling /trade-fair ...
+ ✓ Compiled /trade-fair in 1073ms
+ GET /trade-fair 200 in 1472ms
+ GET /register 200 in 402ms
+ ○ Compiling /news ...
+ ✓ Compiled /news in 1149ms
+ GET /news 200 in 1469ms
+ ○ Compiling /faq ...
+ ✓ Compiled /faq in 1013ms
+ GET /faq 200 in 1344ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 895ms
+ GET /contact 200 in 1172ms
+ GET /login 200 in 444ms
+ GET /register 200 in 553ms
+ GET / 200 in 645ms
+ GET /images/events/trade-fair.jpg 404 in 913ms
+ GET /images/events/panel.jpg 404 in 1065ms
+ GET /images/events/opening.jpg 404 in 1215ms
+ GET / 200 in 1732ms
+ GET / 200 in 1166ms
+ GET / 200 in 1211ms
+ GET /about 200 in 1078ms
+ GET /login 200 in 677ms
+ GET /register 200 in 642ms
+ GET /investment-opportunities 200 in 966ms
+ GET /conference-programme 200 in 830ms
+ GET /sponsors-partners 200 in 712ms
+ GET /trade-fair 200 in 730ms
+ GET /news 200 in 848ms
+ GET /faq 200 in 957ms
+ GET /contact 200 in 867ms
+ ✓ Compiled in 1584ms
+ ○ Compiling / ...
+ ✓ Compiled / in 958ms
+ GET / 200 in 4260ms
+ GET / 200 in 1416ms
+ GET / 200 in 1244ms
+ GET / 200 in 1106ms
+ GET / 200 in 1004ms
+ GET / 200 in 1219ms
+ GET / 200 in 1068ms
+ GET / 200 in 1100ms
+ GET / 200 in 912ms
+ GET / 200 in 1393ms
+ GET /images/events/trade-fair.jpg 404 in 1008ms
+ GET /images/events/opening.jpg 404 in 1291ms
+ GET /images/events/panel.jpg 404 in 1385ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 497ms
