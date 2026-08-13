@@ -83,7 +83,22 @@ function Hero({ section }: { section: PageSection }) {
 }
 
 function RichSection({ section }: { section: PageSection }) {
+  const m = meta(section);
   const hasImage = !!section.imageUrl;
+  const logoUrl = m.logoUrl as string | undefined;
+  const titleBlock = section.title ? (
+    <div className="flex items-center gap-3">
+      {logoUrl ? (
+        <ImgWithFallback
+          src={logoUrl}
+          alt="Logo"
+          className="h-10 w-10 object-contain"
+          fallback={null}
+        />
+      ) : null}
+      <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl">{section.title}</h2>
+    </div>
+  ) : null;
   return hasImage ? (
     <section className="px-4 py-16">
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
@@ -100,9 +115,7 @@ function RichSection({ section }: { section: PageSection }) {
           />
         </div>
         <div>
-          {section.title ? (
-            <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl">{section.title}</h2>
-          ) : null}
+          {titleBlock}
           {section.body ? (
             <div className="mt-4 space-y-4 whitespace-pre-line leading-relaxed text-muted-foreground">
               {section.body.split("\n\n").map((para, i) => (
@@ -115,9 +128,7 @@ function RichSection({ section }: { section: PageSection }) {
     </section>
   ) : (
     <section className="mx-auto max-w-3xl px-4 py-16">
-      {section.title ? (
-        <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
-      ) : null}
+      {titleBlock}
       {section.body ? (
         <div className="mt-4 space-y-4 whitespace-pre-line leading-relaxed text-muted-foreground">
           {section.body.split("\n\n").map((para, i) => (
