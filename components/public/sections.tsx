@@ -41,7 +41,7 @@ function Hero({ section }: { section: PageSection }) {
   return (
     <section
       className={`relative px-4 py-24 text-center text-primary-foreground sm:py-32 ${
-        hasImage ? "bg-cover bg-center" : "bg-primary"
+        hasImage ? "bg-cover bg-top" : "bg-primary"
       }`}
       style={hasImage ? { backgroundImage: `url(${section.imageUrl})` } : undefined}
     >
