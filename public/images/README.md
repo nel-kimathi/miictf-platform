@@ -60,5 +60,25 @@ Use **transparent PNG** logos, ideally 200×60 px or similar landscape ratio.
 - `images/leadership/chairman.jpeg` ✅
 - `images/logos/miictf-logo.png` ✅
 - `images/sections/meru-county.png` ✅
+- `images/sections/tripartite.svg` ✅ (placeholder — replace with your tripartite meeting photo)
 - `images/logos/mcg.png` ✅
 - `images/logos/KNCCI LOGO final V1.png` ✅
+
+---
+
+## `images/committee/` — Full committee (About page)
+
+These appear on the **About page** organising committee section (13 members).
+
+| File name | Member | Org |
+|---|---|---|
+| `veronicah-kihenja.jpg` | Veronicah Kihenja — Vice Chairperson | KNCCI |
+| `william-wambugu.jpg` | William Wambugu — Director | KNCCI |
+| `martin-mbui.jpg` | Martin Kiogora Mbui — CEO | KNCCI |
+| `patrick-kathurima.jpg` | Patrick Kathurima — Secretary | KNCCI |
+| `julius-ithae.jpg` | Dr. Julius Ithae — Chairperson | MUST |
+| `patrick-kubai.jpg` | Dr. Patrick Kinyua Kubai | MUST |
+| `jackline-kanana.jpg` | Jackline Kanana — Vice Chairperson | MCG |
+| `kithinji-ruri.jpg` | Kithinji Ruri | MCG |
+
+All images should be **square** (at least 400×400 px). They render as circles.

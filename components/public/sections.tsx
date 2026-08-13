@@ -83,15 +83,47 @@ function Hero({ section }: { section: PageSection }) {
 }
 
 function RichSection({ section }: { section: PageSection }) {
-  return (
+  const hasImage = !!section.imageUrl;
+  return hasImage ? (
+    <section className="px-4 py-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+        <div className="relative flex items-center justify-center">
+          <ImgWithFallback
+            src={section.imageUrl!}
+            alt={section.title ?? "Image"}
+            className="rounded-xl object-cover shadow-lg"
+            fallback={
+              <div className="flex h-64 w-full items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <span className="text-sm font-semibold">Add image here</span>
+              </div>
+            }
+          />
+        </div>
+        <div>
+          {section.title ? (
+            <h2 className="font-heading text-2xl font-bold text-primary sm:text-3xl">{section.title}</h2>
+          ) : null}
+          {section.body ? (
+            <div className="mt-4 space-y-4 whitespace-pre-line leading-relaxed text-muted-foreground">
+              {section.body.split("\n\n").map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  ) : (
     <section className="mx-auto max-w-3xl px-4 py-16">
       {section.title ? (
         <h2 className="font-heading text-2xl font-bold text-primary">{section.title}</h2>
       ) : null}
       {section.body ? (
-        <p className="mt-4 whitespace-pre-line leading-relaxed text-muted-foreground">
-          {section.body}
-        </p>
+        <div className="mt-4 space-y-4 whitespace-pre-line leading-relaxed text-muted-foreground">
+          {section.body.split("\n\n").map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
       ) : null}
     </section>
   );

@@ -173,7 +173,8 @@ const pages: PageSeed[] = [
         key: "body",
         order: 1,
         title: "Our Story",
-        body: "The Meru International Investment Conference & Trade Fair (MAIICTF) was established to position Meru as a leading investment destination. The conference convenes government, investors, development partners, SMEs and the diaspora to explore opportunities and close deals.",
+        body: "Three institutions. One vision. A new chapter for Meru.\n\nThe Meru Annual International Investment Conference & Trade Fair (MAIICTF) was born from a unique tripartite partnership between the KNCCI Meru Chapter, Meru University of Science and Technology, and the Meru County Government—uniting business, research, innovation and government to unlock Meru's potential.\n\nFor the first time, the business community, investors, researchers and innovators come together under one platform to showcase, connect and create opportunities.\n\nWith the support of the Governor of Meru County, the research and innovation strength of Meru University, and the networks and enterprise of KNCCI Meru, MAIICTF puts the best of Meru on display—from agriculture and tourism to manufacturing, technology, trade and emerging enterprises.\n\nMAIICTF is more than a conference and trade fair. It is Meru opening its doors to the world and inviting the world to invest, partner and grow with us.",
+        imageUrl: "/images/sections/tripartite.svg",
       },
       {
         key: "mission",
