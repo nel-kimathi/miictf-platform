@@ -1,16 +1,20 @@
-export default function SettingsPage() {
+import { getSettings } from "./actions";
+import { SettingsForm } from "./settings-form";
+
+export default async function SettingsPage() {
+  const settings = await getSettings();
+
   return (
     <div>
-      <h1 className="font-heading text-3xl font-bold text-primary">
-        Settings
-      </h1>
-      <p className="mt-2 text-muted-foreground">
-        System-level settings and configuration.
-      </p>
-      <div className="mt-6 rounded-lg border bg-card p-6">
-        <p className="text-sm text-muted-foreground">
-          Coming in Phase 2 — Settings module.
+      <div className="mb-6">
+        <h1 className="font-heading text-3xl font-bold text-primary">Settings</h1>
+        <p className="mt-1 text-muted-foreground">
+          Manage site-wide configuration used across the public website.
         </p>
+      </div>
+
+      <div className="rounded-lg border bg-card p-6">
+        <SettingsForm settings={settings} />
       </div>
     </div>
   );
