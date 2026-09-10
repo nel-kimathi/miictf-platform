@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
+import { logAdminAction } from "@/lib/admin/system-log";
 
 const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"] as const;
 
@@ -79,6 +80,13 @@ export async function updateUser(formData: FormData) {
       where: { id },
       data: { role, registrationStatus },
     });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "UPDATE",
+      entityType: "USER",
+      entityId: id,
+      details: { role, registrationStatus },
+    });
     revalidatePath("/admin/users");
     return { success: true };
   } catch {
@@ -100,6 +108,12 @@ export async function deleteUser(formData: FormData) {
 
   try {
     await prisma.user.delete({ where: { id } });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "DELETE",
+      entityType: "USER",
+      entityId: id,
+    });
     revalidatePath("/admin/users");
     return { success: true };
   } catch {

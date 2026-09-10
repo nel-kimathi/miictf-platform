@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
+import { logAdminAction } from "@/lib/admin/system-log";
 
 const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"] as const;
 
@@ -15,6 +16,7 @@ async function requireAdmin() {
   if (!ADMIN_ROLES.includes(role as (typeof ADMIN_ROLES)[number])) {
     throw new Error("Forbidden");
   }
+  return session;
 }
 
 function generateSlug(title: string) {
@@ -49,7 +51,7 @@ export async function getNewsArticle(id: string) {
 }
 
 export async function createNewsArticle(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const raw = Object.fromEntries(formData);
   const parsed = newsSchema.safeParse(raw);
@@ -61,7 +63,7 @@ export async function createNewsArticle(_prevState: unknown, formData: FormData)
   const slug = generateSlug(title);
 
   try {
-    await prisma.news.create({
+    const article = await prisma.news.create({
       data: {
         id: crypto.randomUUID(),
         title,
@@ -74,6 +76,13 @@ export async function createNewsArticle(_prevState: unknown, formData: FormData)
         publishedAt: publishedAt ? new Date(publishedAt) : null,
       },
     });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "CREATE",
+      entityType: "NEWS",
+      entityId: article.id,
+      details: { title, status },
+    });
     revalidatePath("/admin/news");
     revalidatePath("/news");
     redirect("/admin/news");
@@ -83,7 +92,7 @@ export async function createNewsArticle(_prevState: unknown, formData: FormData)
 }
 
 export async function updateNewsArticle(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const id = formData.get("id") as string;
   if (!id) return { error: "Missing article ID" };
@@ -109,6 +118,13 @@ export async function updateNewsArticle(_prevState: unknown, formData: FormData)
         publishedAt: publishedAt ? new Date(publishedAt) : null,
       },
     });
+    await logAdminAction({
+      userId: session.user.id,
+      action: status === "PUBLISHED" ? "PUBLISH" : "UPDATE",
+      entityType: "NEWS",
+      entityId: id,
+      details: { title, status },
+    });
     revalidatePath("/admin/news");
     revalidatePath("/news");
     revalidatePath(`/news/${generateSlug(title)}`);
@@ -119,12 +135,18 @@ export async function updateNewsArticle(_prevState: unknown, formData: FormData)
 }
 
 export async function deleteNewsArticle(formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
   const id = formData.get("id") as string;
   if (!id) return { error: "Missing article ID" };
 
   try {
     await prisma.news.delete({ where: { id } });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "DELETE",
+      entityType: "NEWS",
+      entityId: id,
+    });
     revalidatePath("/admin/news");
     revalidatePath("/news");
     return { success: true };
