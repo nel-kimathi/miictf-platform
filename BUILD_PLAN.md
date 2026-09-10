@@ -65,7 +65,7 @@ and land on a role-appropriate (even if bare) dashboard.
 - [x] Admin list/search/approve/reject/export exhibitors (basic, using existing User fields)
 - [x] Booth data model: Hall → Booth (number, size, category, status)
 - [x] Admin: create halls
-- [ ] Admin: create booths and assign exhibitor ↔ booth
+- [x] Admin: create booths and assign exhibitor ↔ booth
 - [ ] Exhibitor dashboard: view own allocated booth
 - [x] (Design only, no UI yet) confirm schema supports a future visual booth map
 

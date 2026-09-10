@@ -21,7 +21,8 @@
 - GitHub Actions run #48 and Vercel deployment for commit `8b3aadd` are now passing
 - Added `ExhibitionHall` and `Booth` models with `BoothStatus` enum (AVAILABLE, RESERVED, ALLOCATED, OCCUPIED), applied migration locally and to TiDB Cloud
 - Built Exhibition Hall admin CRUD (list, create, edit, delete) under `/admin/booths`
-- Committed and pushed schema migration (`fd762d9`) and hall CRUD (`44aef78`); Vercel deployment successful
+- Built Booth admin CRUD (create, edit, delete, filter by hall) and exhibitor assignment UI under `/admin/booths`
+- Committed and pushed schema migration (`fd762d9`), hall CRUD (`44aef78`) and booth CRUD + assignment (`edd94ff`); Vercel deployments successful
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
