@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
+import { logAdminAction } from "@/lib/admin/system-log";
 
 const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"] as const;
 
@@ -14,6 +15,7 @@ async function requireAdmin() {
   if (!ADMIN_ROLES.includes(role as (typeof ADMIN_ROLES)[number])) {
     throw new Error("Forbidden");
   }
+  return session;
 }
 
 export async function getSponsors(query?: string) {
@@ -53,7 +55,7 @@ const updateSchema = z.object({
 });
 
 export async function updateSponsorStatus(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const raw = Object.fromEntries(formData);
   const parsed = updateSchema.safeParse(raw);
@@ -67,6 +69,13 @@ export async function updateSponsorStatus(_prevState: unknown, formData: FormDat
     await prisma.user.update({
       where: { id, role: "SPONSOR" },
       data: { registrationStatus },
+    });
+    await logAdminAction({
+      userId: session.user.id,
+      action: registrationStatus === "APPROVED" ? "APPROVE" : "REJECT",
+      entityType: "SPONSOR",
+      entityId: id,
+      details: { registrationStatus },
     });
     revalidatePath("/admin/sponsors");
     return { success: true };

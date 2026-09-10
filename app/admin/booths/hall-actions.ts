@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
+import { logAdminAction } from "@/lib/admin/system-log";
 
 const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"] as const;
 
@@ -14,6 +15,7 @@ async function requireAdmin() {
   if (!ADMIN_ROLES.includes(role as (typeof ADMIN_ROLES)[number])) {
     throw new Error("Forbidden");
   }
+  return session;
 }
 
 // --- Exhibition Halls ---
@@ -34,7 +36,7 @@ export async function getHalls() {
 }
 
 export async function saveHall(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const raw = Object.fromEntries(formData);
   const parsed = hallSchema.safeParse(raw);
@@ -50,9 +52,23 @@ export async function saveHall(_prevState: unknown, formData: FormData) {
         where: { id },
         data: { name, description, order },
       });
+      await logAdminAction({
+        userId: session.user.id,
+        action: "UPDATE",
+        entityType: "HALL",
+        entityId: id,
+        details: { name },
+      });
     } else {
-      await prisma.exhibitionHall.create({
+      const hall = await prisma.exhibitionHall.create({
         data: { name, description, order },
+      });
+      await logAdminAction({
+        userId: session.user.id,
+        action: "CREATE",
+        entityType: "HALL",
+        entityId: hall.id,
+        details: { name },
       });
     }
     revalidatePath("/admin/booths");
@@ -63,13 +79,19 @@ export async function saveHall(_prevState: unknown, formData: FormData) {
 }
 
 export async function deleteHall(formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const id = formData.get("id");
   if (typeof id !== "string" || !id) return { error: "Invalid hall ID" };
 
   try {
     await prisma.exhibitionHall.delete({ where: { id } });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "DELETE",
+      entityType: "HALL",
+      entityId: id,
+    });
     revalidatePath("/admin/booths");
     return { success: true };
   } catch {

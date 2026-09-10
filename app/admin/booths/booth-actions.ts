@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
+import { logAdminAction } from "@/lib/admin/system-log";
 
 const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"] as const;
 
@@ -14,6 +15,7 @@ async function requireAdmin() {
   if (!ADMIN_ROLES.includes(role as (typeof ADMIN_ROLES)[number])) {
     throw new Error("Forbidden");
   }
+  return session;
 }
 
 const boothSchema = z.object({
@@ -40,7 +42,7 @@ export async function getBooths(hallId?: string) {
 }
 
 export async function saveBooth(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const raw = Object.fromEntries(formData);
   const parsed = boothSchema.safeParse(raw);
@@ -56,9 +58,23 @@ export async function saveBooth(_prevState: unknown, formData: FormData) {
         where: { id },
         data: { hallId, number, size, category, status, price, notes },
       });
+      await logAdminAction({
+        userId: session.user.id,
+        action: "UPDATE",
+        entityType: "BOOTH",
+        entityId: id,
+        details: { number, status },
+      });
     } else {
-      await prisma.booth.create({
+      const booth = await prisma.booth.create({
         data: { hallId, number, size, category, status, price, notes },
+      });
+      await logAdminAction({
+        userId: session.user.id,
+        action: "CREATE",
+        entityType: "BOOTH",
+        entityId: booth.id,
+        details: { number, status },
       });
     }
     revalidatePath("/admin/booths");
@@ -69,13 +85,19 @@ export async function saveBooth(_prevState: unknown, formData: FormData) {
 }
 
 export async function deleteBooth(formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const id = formData.get("id");
   if (typeof id !== "string" || !id) return { error: "Invalid booth ID" };
 
   try {
     await prisma.booth.delete({ where: { id } });
+    await logAdminAction({
+      userId: session.user.id,
+      action: "DELETE",
+      entityType: "BOOTH",
+      entityId: id,
+    });
     revalidatePath("/admin/booths");
     return { success: true };
   } catch {
@@ -89,7 +111,7 @@ const assignSchema = z.object({
 });
 
 export async function assignExhibitor(_prevState: unknown, formData: FormData) {
-  await requireAdmin();
+  const session = await requireAdmin();
 
   const raw = Object.fromEntries(formData);
   const parsed = assignSchema.safeParse(raw);
@@ -106,6 +128,13 @@ export async function assignExhibitor(_prevState: unknown, formData: FormData) {
         exhibitorId: exhibitorId || null,
         status: exhibitorId ? "ALLOCATED" : "AVAILABLE",
       },
+    });
+    await logAdminAction({
+      userId: session.user.id,
+      action: exhibitorId ? "ASSIGN" : "UNASSIGN",
+      entityType: "BOOTH",
+      entityId: boothId,
+      details: { exhibitorId },
     });
     revalidatePath("/admin/booths");
     return { success: true };
