@@ -1,16 +1,28 @@
-export default function UsersPage() {
+import { getUsers } from "./actions";
+import { UserTable } from "./user-table";
+import { UserSearch } from "./user-search";
+
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const users = await getUsers(q);
+
   return (
     <div>
-      <h1 className="font-heading text-3xl font-bold text-primary">
-        User Management
-      </h1>
-      <p className="mt-2 text-muted-foreground">
-        List, search, edit, deactivate users and assign roles.
-      </p>
-      <div className="mt-6 rounded-lg border bg-card p-6">
-        <p className="text-sm text-muted-foreground">
-          Coming in Phase 2 — User Management module.
+      <div className="mb-6">
+        <h1 className="font-heading text-3xl font-bold text-primary">User Management</h1>
+        <p className="mt-1 text-muted-foreground">
+          List, search, edit roles and registration status, or remove users.
         </p>
+      </div>
+
+      <UserSearch initialQuery={q} />
+
+      <div className="mt-4">
+        <UserTable users={users} />
       </div>
     </div>
   );
