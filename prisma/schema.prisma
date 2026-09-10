@@ -45,6 +45,7 @@ model User {
   updatedAt          DateTime           @updatedAt
   sessions           Session[]
   accounts           Account[]
+  booths             Booth[]
 
   @@map("user")
 }
@@ -141,6 +142,13 @@ enum NewsStatus {
   PUBLISHED
 }
 
+enum BoothStatus {
+  AVAILABLE
+  RESERVED
+  ALLOCATED
+  OCCUPIED
+}
+
 model News {
   id          String     @id
   title       String
@@ -155,4 +163,38 @@ model News {
   updatedAt   DateTime   @updatedAt
 
   @@map("news")
+}
+
+// --- Booth management (halls + booths; supports future visual booth map) ---
+
+model ExhibitionHall {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?  @db.Text
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  booths      Booth[]
+
+  @@map("exhibition_hall")
+}
+
+model Booth {
+  id          String      @id @default(cuid())
+  hallId      String
+  number      String
+  size        String?
+  category    String?
+  status      BoothStatus @default(AVAILABLE)
+  price       Decimal?    @db.Decimal(10, 2)
+  exhibitorId String?
+  notes       String?     @db.Text
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  hall        ExhibitionHall @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  exhibitor   User?          @relation(fields: [exhibitorId], references: [id], onDelete: SetNull)
+
+  @@unique([hallId, number])
+  @@map("booth")
 }
