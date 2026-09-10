@@ -52,7 +52,7 @@ export function AdminSidebar() {
       <SidebarHeader className="border-b px-4 py-3">
         <Link href="/admin" className="flex items-center gap-2">
           <span className="font-heading text-lg font-bold text-primary group-data-[collapsible=icon]:hidden">
-            MIICTF Admin
+            MIICCOF Admin
           </span>
         </Link>
       </SidebarHeader>
