@@ -48,7 +48,7 @@ and land on a role-appropriate (even if bare) dashboard.
 - [x] Dashboard: summary cards + charts (totals, pending/approved registrations,
       latest registrations, recent announcements)
 - [x] User Management: list/search/edit/deactivate users, assign roles
-- [ ] System Logs: audit log of admin actions (who did what, when)
+- [x] System Logs: audit log of admin actions (who did what, when)
 
 ### Delegate module
 - [x] Admin: approve/reject/edit/search/export delegates

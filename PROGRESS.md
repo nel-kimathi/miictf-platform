@@ -23,6 +23,10 @@
 - Built Exhibition Hall admin CRUD (list, create, edit, delete) under `/admin/booths`
 - Built Booth admin CRUD (create, edit, delete, filter by hall) and exhibitor assignment UI under `/admin/booths`
 - Committed and pushed schema migration (`fd762d9`), hall CRUD (`44aef78`) and booth CRUD + assignment (`edd94ff`); Vercel deployments successful
+- Added `SystemLog` model and applied migration to TiDB Cloud via temporary admin-only API route (route removed after use)
+- Built `/admin/logs` audit log viewer and `logAdminAction` helper
+- Logged user, news, delegate, sponsor, exhibitor, hall and booth admin actions to `SystemLog`
+- Removed temporary setup-admin page and system_log migration route after use
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
