@@ -1,38 +1,53 @@
-import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
-import { dashboardPathForRole } from "@/lib/roles";
-import { SignOutButton } from "@/components/auth/sign-out-button";
 
-const ADMIN_ROLES = ["ADMIN", "SUPER_ADMIN"];
+const SUMMARY_CARDS = [
+  { label: "Total Delegates", value: "—", href: "/admin/delegates" },
+  { label: "Total Sponsors", value: "—", href: "/admin/sponsors" },
+  { label: "Total Exhibitors", value: "—", href: "/admin/exhibitors" },
+  { label: "Available Booths", value: "—", href: "/admin/booths" },
+  { label: "Pending Registrations", value: "—", href: "/admin/users" },
+  { label: "Approved Registrations", value: "—", href: "/admin/users" },
+];
 
 export default async function AdminPage() {
   const session = await getSession();
-  if (!session || !session.user.emailVerified) {
-    redirect("/login");
-  }
-  const userRole = (session.user as { role?: string }).role ?? "DELEGATE";
-  if (!ADMIN_ROLES.includes(userRole)) {
-    redirect(dashboardPathForRole(userRole));
-  }
+  const userName = session?.user?.name ?? "Admin";
+  const userRole = (session?.user as { role?: string }).role ?? "ADMIN";
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
-      <div className="flex items-center justify-between">
+    <div>
+      <div className="mb-8">
         <h1 className="font-heading text-3xl font-bold text-primary">
-          Administration Portal
+          Dashboard
         </h1>
-        <SignOutButton />
-      </div>
-      <div className="mt-6 rounded-lg border bg-card p-6">
-        <p className="font-medium">Welcome, {session.user.name}</p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Role: {userRole === "SUPER_ADMIN" ? "Super Administrator" : "Administrator"}
-        </p>
-        <p className="mt-4 text-sm text-muted-foreground">
-          Admin modules (dashboard, user management, delegates, sponsors,
-          exhibitors, booths, news, reports, settings, logs) arrive in Phase 2.
+        <p className="mt-1 text-muted-foreground">
+          Welcome back, {userName}. Role: {userRole}
         </p>
       </div>
-    </main>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {SUMMARY_CARDS.map((card) => (
+          <div
+            key={card.label}
+            className="rounded-lg border bg-card p-6 transition-colors hover:bg-accent/5"
+          >
+            <p className="text-sm font-medium text-muted-foreground">
+              {card.label}
+            </p>
+            <p className="mt-2 text-3xl font-bold text-foreground">
+              {card.value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 rounded-lg border bg-card p-6">
+        <h2 className="font-heading text-xl font-semibold">Recent Activity</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Activity feeds, charts and announcements will appear here once the
+          data modules are wired up.
+        </p>
+      </div>
+    </div>
   );
 }

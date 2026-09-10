@@ -1,4 +1,4 @@
-# BUILD_PLAN.md — MIICTF Digital Platform
+# BUILD_PLAN.md — MIICCOF Digital Platform
 
 Work top to bottom. Check off `[x]` as items complete and commit after each checked group.
 

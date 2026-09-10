@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { getNewsBySlug } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -21,7 +22,21 @@ export default async function NewsDetailPage({
 }) {
   const { slug } = await params;
   const item = await getNewsBySlug(slug);
-  if (!item) notFound();
+  if (!item) {
+    return (
+      <article className="mx-auto max-w-3xl px-4 pb-12 pt-28">
+        <Link href="/news" className="text-sm text-primary hover:underline">
+          ← Back to News &amp; Updates
+        </Link>
+        <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-primary">
+          Article Not Found
+        </h1>
+        <p className="mt-4 text-muted-foreground">
+          This article may have been removed or is not yet available.
+        </p>
+      </article>
+    );
+  }
 
   return (
     <article className="mx-auto max-w-3xl px-4 pb-12 pt-28">

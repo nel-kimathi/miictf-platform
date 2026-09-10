@@ -1,15 +1,33 @@
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "@/lib/generated/prisma/client";
+import type { PoolConfig } from "mariadb";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 const rawUrl = process.env.DATABASE_URL ?? "";
-const url = rawUrl
-  .replace(/^mysql:\/\//, "mariadb://")
-  + (rawUrl.includes("?") ? "&allowPublicKeyRetrieval=true" : "?allowPublicKeyRetrieval=true");
-const adapter = new PrismaMariaDb(url);
+const isRemote = rawUrl.includes("tidbcloud.com");
+
+let poolConfig: PoolConfig | string;
+if (isRemote) {
+  const parsed = new URL(rawUrl);
+  poolConfig = {
+    host: parsed.hostname,
+    port: Number(parsed.port) || 4000,
+    user: decodeURIComponent(parsed.username),
+    password: decodeURIComponent(parsed.password),
+    database: parsed.pathname.replace(/^\//, ""),
+    ssl: { rejectUnauthorized: true },
+    allowPublicKeyRetrieval: true,
+  };
+} else {
+  poolConfig = rawUrl
+    .replace(/^mysql:\/\//, "mariadb://")
+    + (rawUrl.includes("?") ? "&allowPublicKeyRetrieval=true" : "?allowPublicKeyRetrieval=true");
+}
+
+const adapter = new PrismaMariaDb(poolConfig);
 
 export const prisma =
   globalForPrisma.prisma ??

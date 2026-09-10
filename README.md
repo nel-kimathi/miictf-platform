@@ -1,7 +1,7 @@
-# MIICTF Digital Platform
+# MIICCOF Digital Platform
 
 Event management platform for the Meru International Investment Conference &
-Trade Fair: public marketing site + role-based back office. See `AGENTS.md`,
+Consumer Fair: public marketing site + role-based back office. See `AGENTS.md`,
 `BUILD_PLAN.md` and `PROGRESS.md` for the project brief and status.
 
 ## Tech stack

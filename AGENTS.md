@@ -1,4 +1,4 @@
-# AGENTS.md — MIICTF Digital Platform
+# AGENTS.md — MIICCOF Digital Platform
 
 > This file is the permanent project brief. Read this AND `BUILD_PLAN.md` AND `PROGRESS.md`
 > in full before doing any work, every single session. You have no memory between sessions —
@@ -7,7 +7,7 @@
 ## What this project is
 
 An event management / conference platform for the **Meru International Investment
-Conference & Trade Fair (MIICTF)**. It has a public marketing website plus a role-based
+Conference & Consumer Fair (MIICCOF)**. It has a public marketing website plus a role-based
 back office. It is designed to be reused for future events (e.g. a later "Meru Women
 Business Summit") without rebuilding the core system — so avoid hardcoding anything
 that is specific to the 2026 MIICTF event where a general solution is realistic.
@@ -39,7 +39,7 @@ never just hidden UI — every route/action must check role server-side.
 
 ## Public website pages
 
-Home, About MIICTF, Investment Opportunities, Trade Fair, Conference Programme,
+Home, About MIICCOF, Investment Opportunities, Consumer Fair, Conference Programme,
 Sponsors and Partners, News & Updates, FAQ, Contact, Register, Login.
 
 **Critical constraint: no hardcoded content.** Every page's text/images must be editable

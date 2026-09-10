@@ -485,7 +485,7 @@ function TierCards({ section }: { section: PageSection }) {
               Our Partners
             </p>
             <p className="mt-2 text-muted-foreground">
-              Organisations partnering with us to make MAIICTF possible.
+              Organisations partnering with us to make MIICCOF possible.
             </p>
             <div className="mt-8">
               <BrandCarousel brands={brands} />
@@ -510,11 +510,11 @@ function EventList({ section }: { section: PageSection }) {
   }[] = m.events ?? [];
 
   const year = 2026;
-  const month = 10; // November (0-indexed)
+  const month = 11; // December (0-indexed)
   const monthName = new Date(year, month).toLocaleString("en-US", { month: "long" });
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const eventDays = [25, 26, 27, 28];
+  const eventDays = [3, 4, 5];
 
   const blanks = Array.from({ length: firstDay }, (_, i) => i);
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);

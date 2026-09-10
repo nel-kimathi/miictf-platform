@@ -39,9 +39,9 @@ const pages: PageSeed[] = [
       {
         key: "hero",
         order: 0,
-        title: "Meru Annual International Investors Conference and Trade Fair",
+        title: "Meru International Investment Conference and Consumer Fair",
         subtitle: "Unlocking investment and trade opportunities in Meru",
-        body: "MAIICTF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
+        body: "MIICCOF brings together investors, government, business leaders and innovators to showcase opportunities, forge partnerships and drive inclusive growth.",
         imageUrl: "/images/hero/tea-harvesting.jpeg",
         metadata: {
           badge: "November 25 – 28, 2026",
@@ -55,7 +55,7 @@ const pages: PageSeed[] = [
         key: "leadership",
         order: 1,
         title: "Our Leadership",
-        subtitle: "The team championing MAIICTF",
+        subtitle: "The team championing MIICCOF",
         metadata: {
           variant: "leadership",
           linkHref: "/about#leadership",
@@ -111,7 +111,7 @@ const pages: PageSeed[] = [
         key: "committee",
         order: 4,
         title: "Organising Committee",
-        subtitle: "Key representatives driving MAIICTF",
+        subtitle: "Key representatives driving MIICCOF",
         metadata: {
           variant: "committee",
           cards: [
@@ -152,7 +152,7 @@ const pages: PageSeed[] = [
           events: [
             { title: "Opening Ceremony", time: "Day 1 · Morning", description: "Official opening and keynote addresses.", image: "/images/events/opening-ceremony.jpg" },
             { title: "Investor Panel Discussions", time: "Day 1 · Afternoon", description: "Sector panels with investors and government.", image: "/images/events/panel-discussion.jpg" },
-            { title: "Trade Fair & Exhibitions", time: "All Days", description: "Exhibition booths and B2B networking.", image: "/images/events/Trade Fair-exhibitions.jpg" },
+            { title: "Consumer Fair & Exhibitions", time: "All Days", description: "Exhibition booths and B2B networking.", image: "/images/events/Trade Fair-exhibitions.jpg" },
           ],
           cta: { label: "Full Programme", href: "/conference-programme" },
         },
@@ -161,12 +161,12 @@ const pages: PageSeed[] = [
   },
   {
     slug: "about",
-    title: "About MAIICTF",
+    title: "About MIICCOF",
     sections: [
       {
         key: "hero",
         order: 0,
-        title: "About MAIICTF",
+        title: "About MIICCOF",
         subtitle: "A platform for investment, trade and partnerships",
         imageUrl: "/images/hero/about-us-hero.jpeg",
       },
@@ -174,7 +174,7 @@ const pages: PageSeed[] = [
         key: "body",
         order: 1,
         title: "Our Story",
-        body: "Three institutions. One vision. A new chapter for Meru.\n\nThe Meru Annual International Investment Conference & Trade Fair (MAIICTF) was born from a unique tripartite partnership between the KNCCI Meru Chapter, Meru University of Science and Technology, and the Meru County Government—uniting business, research, innovation and government to unlock Meru's potential.\n\nFor the first time, the business community, investors, researchers and innovators come together under one platform to showcase, connect and create opportunities.\n\nWith the support of the Governor of Meru County, the research and innovation strength of Meru University, and the networks and enterprise of KNCCI Meru, MAIICTF puts the best of Meru on display—from agriculture and tourism to manufacturing, technology, trade and emerging enterprises.\n\nMAIICTF is more than a conference and trade fair. It is Meru opening its doors to the world and inviting the world to invest, partner and grow with us.",
+        body: "Three institutions. One vision. A new chapter for Meru.\n\nThe Meru International Investment Conference and Consumer Fair (MIICCOF) was born from a unique tripartite partnership between the KNCCI Meru Chapter, Meru University of Science and Technology, and the Meru County Government—uniting business, research, innovation and government to unlock Meru's potential.\n\nFor the first time, the business community, investors, researchers and innovators come together under one platform to showcase, connect and create opportunities.\n\nWith the support of the Governor of Meru County, the research and innovation strength of Meru University, and the networks and enterprise of KNCCI Meru, MIICCOF puts the best of Meru on display—from agriculture and tourism to manufacturing, technology, trade and emerging enterprises.\n\nMIICCOF is more than a conference and consumer fair. It is Meru opening its doors to the world and inviting the world to invest, partner and grow with us.",
         imageUrl: "/images/sections/about-tripartite.png",
         metadata: { logoUrl: "/images/logos/miictf-logo.png" },
       },
@@ -193,7 +193,7 @@ const pages: PageSeed[] = [
         key: "leadership",
         order: 3,
         title: "Our Leadership",
-        subtitle: "The team championing MAIICTF",
+        subtitle: "The team championing MIICCOF",
         metadata: {
           variant: "leadership",
           anchorId: "leadership",
@@ -283,18 +283,18 @@ const pages: PageSeed[] = [
   },
   {
     slug: "trade-fair",
-    title: "Trade Fair",
+    title: "Consumer Fair",
     sections: [
       {
         key: "hero",
         order: 0,
-        title: "Trade Fair & Exhibitions",
+        title: "Consumer Fair & Exhibitions",
         subtitle: "Showcase your products and services",
       },
       {
         key: "body",
         order: 1,
-        title: "Exhibit at MAIICTF",
+        title: "Exhibit at MIICCOF",
         body: "The trade fair gives exhibitors direct access to thousands of delegates, buyers and investors. Booths are available in themed exhibition halls across multiple sizes and categories.",
       },
       {
@@ -338,7 +338,7 @@ const pages: PageSeed[] = [
             { title: "Opening Ceremony & Keynotes", time: "Day 1", description: "Official opening, keynote addresses and ministerial remarks." },
             { title: "Sector Panels", time: "Day 1–2", description: "Deep dives into priority investment sectors." },
             { title: "Deal Room & B2B Meetings", time: "Day 2", description: "Curated investor–project matchmaking sessions." },
-            { title: "Trade Fair & Awards", time: "Day 3", description: "Exhibitions, county showcases and closing ceremony." },
+            { title: "Consumer Fair & Awards", time: "Day 3", description: "Exhibitions, county showcases and closing ceremony." },
           ],
         },
       },
@@ -352,7 +352,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "Sponsors & Partners",
-        subtitle: "Partner with MAIICTF",
+        subtitle: "Partner with MIICCOF",
       },
       {
         key: "tiers",
@@ -384,7 +384,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "News & Updates",
-        subtitle: "Latest announcements from the MAIICTF secretariat",
+        subtitle: "Latest announcements from the MIICCOF secretariat",
       },
     ],
   },
@@ -403,7 +403,7 @@ const pages: PageSeed[] = [
         order: 1,
         metadata: {
           items: [
-            { question: "Who can attend MAIICTF?", answer: "Investors, business owners, SMEs, government officials, development partners and the general public." },
+            { question: "Who can attend MIICCOF?", answer: "Investors, business owners, SMEs, government officials, development partners and the general public." },
             { question: "How do I register?", answer: "Use the Register page to create an account as a delegate, sponsor or exhibitor. You will receive a verification email to activate your account." },
             { question: "How do I book an exhibition booth?", answer: "Register as an exhibitor. Booth allocation is managed by the secretariat through the exhibitor portal." },
             { question: "How can my organisation sponsor the event?", answer: "Register as a sponsor and the partnerships team will contact you with package details." },
@@ -420,7 +420,7 @@ const pages: PageSeed[] = [
         key: "hero",
         order: 0,
         title: "Contact Us",
-        subtitle: "Get in touch with the MAIICTF secretariat",
+        subtitle: "Get in touch with the MIICCOF secretariat",
       },
       {
         key: "details",
@@ -438,10 +438,10 @@ const pages: PageSeed[] = [
 
 const newsItems = [
   {
-    title: "Welcome to the MAIICTF digital platform",
+    title: "Welcome to the MIICCOF digital platform",
     slug: "welcome-to-the-miictf-digital-platform",
     excerpt: "Register as a delegate, sponsor or exhibitor and follow conference updates here.",
-    content: "The MAIICTF digital platform is now live. Delegates, sponsors and exhibitors can register online, receive announcements and access conference information in one place.",
+    content: "The MIICCOF digital platform is now live. Delegates, sponsors and exhibitors can register online, receive announcements and access conference information in one place.",
     category: "Announcement",
     status: "PUBLISHED" as const,
     publishedAt: new Date(),
@@ -451,7 +451,7 @@ const newsItems = [
     slug: "call-for-exhibitors-now-open",
     excerpt: "Organisations can now register to exhibit at the trade fair.",
     content: "Exhibitor registration is open. Booths are allocated on a first-come basis across themed exhibition halls. Register early to secure your space.",
-    category: "Trade Fair",
+    category: "Consumer Fair",
     status: "PUBLISHED" as const,
     publishedAt: new Date(),
   },
@@ -459,7 +459,7 @@ const newsItems = [
     title: "Sponsorship packages available",
     slug: "sponsorship-packages-available",
     excerpt: "Platinum, Gold and Silver sponsorship packages are now available.",
-    content: "Organisations interested in sponsoring MAIICTF can register as sponsors through the platform. The partnerships team will follow up with package details.",
+    content: "Organisations interested in sponsoring MIICCOF can register as sponsors through the platform. The partnerships team will follow up with package details.",
     category: "Sponsorship",
     status: "PUBLISHED" as const,
     publishedAt: new Date(),

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ImgWithFallback } from "./img-with-fallback";
 
@@ -14,7 +14,7 @@ const NAV_BEFORE = [
 
 const TRADE_CHILDREN = [
   { label: "Investment Opportunities", href: "/investment-opportunities" },
-  { label: "Trade Fair", href: "/trade-fair" },
+  { label: "Consumer Fair", href: "/trade-fair" },
 ];
 
 const NAV_AFTER = [
@@ -25,7 +25,17 @@ const NAV_AFTER = [
   { label: "Contact", href: "/contact" },
 ];
 
-function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
+function NavLink({
+  href,
+  label,
+  pathname,
+  className,
+}: {
+  href: string;
+  label: string;
+  pathname: string;
+  className?: string;
+}) {
   const isActive = pathname === href;
   return (
     <Link
@@ -34,7 +44,7 @@ function NavLink({ href, label, pathname }: { href: string; label: string; pathn
         isActive
           ? "bg-white text-primary"
           : "text-white hover:bg-white hover:text-primary active:bg-white active:text-primary"
-      }`}
+      } ${className ?? ""}`}
     >
       {label}
     </Link>
@@ -44,6 +54,8 @@ function NavLink({ href, label, pathname }: { href: string; label: string; pathn
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [tradeOpen, setTradeOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileTradeOpen, setMobileTradeOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -53,7 +65,19 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setTradeOpen(false), [pathname]);
+  useEffect(() => {
+    setTradeOpen(false);
+    setMobileOpen(false);
+    setMobileTradeOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   const solid = scrolled || pathname !== "/";
   const tradeActive = TRADE_CHILDREN.some((c) => c.href === pathname);
@@ -66,34 +90,34 @@ export function SiteHeader() {
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between transition-all duration-300 ${
-          solid ? "px-6 py-2" : "px-6 py-3"
+          solid ? "px-4 py-2 sm:px-6" : "px-4 py-3 sm:px-6"
         }`}
       >
-        {/* Logo — shrinks on scroll */}
+        {/* Logo */}
         <Link
           href="/"
           className="inline-flex shrink-0 items-center rounded-2xl bg-white shadow-lg ring-1 ring-black/5 transition-all duration-300"
         >
           <ImgWithFallback
             src="/images/logos/miictf-logo.png"
-            alt="MAIICTF logo"
+            alt="MIICCOF logo"
             className={`w-auto transition-all duration-300 ${
               solid ? "h-10 px-3 py-2 sm:h-12" : "h-14 px-4 py-2 sm:h-16"
             }`}
             fallback={
               <span
                 className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
-                  solid ? "text-lg px-3 py-2" : "text-2xl px-4 py-2"
+                  solid ? "px-3 py-2 text-lg" : "px-4 py-2 text-2xl"
                 }`}
               >
-                MAIICTF
+                MIICCOF
               </span>
             }
           />
         </Link>
 
-        {/* Nav — fills the middle, items spread evenly */}
-        <nav className="flex flex-1 items-center justify-center gap-x-4 px-4">
+        {/* Desktop nav */}
+        <nav className="hidden items-center justify-center gap-x-4 px-4 lg:flex">
           {NAV_BEFORE.map((item) => (
             <NavLink key={item.href} {...item} pathname={pathname} />
           ))}
@@ -149,8 +173,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Auth — pinned right */}
-        <div className="flex shrink-0 items-center gap-3">
+        {/* Desktop auth buttons */}
+        <div className="hidden shrink-0 items-center gap-3 lg:flex">
           <Button
             variant="ghost"
             size="sm"
@@ -167,6 +191,108 @@ export function SiteHeader() {
             Register
           </Button>
         </div>
+
+        {/* Mobile burger button */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((o) => !o)}
+          className="flex items-center justify-center rounded-lg p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* Mobile menu overlay */}
+      <div
+        className={`fixed inset-0 top-0 z-40 bg-primary transition-opacity duration-300 lg:hidden ${
+          mobileOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+        style={{ paddingTop: solid ? "64px" : "80px" }}
+      >
+        <nav className="flex h-full flex-col overflow-y-auto px-6 py-6">
+          {NAV_BEFORE.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`border-b border-white/10 py-3 text-lg font-bold tracking-wide transition-colors ${
+                pathname === item.href
+                  ? "text-accent"
+                  : "text-white hover:text-accent"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Trade & Investment accordion */}
+          <button
+            type="button"
+            onClick={() => setMobileTradeOpen((o) => !o)}
+            className={`flex items-center justify-between border-b border-white/10 py-3 text-lg font-bold tracking-wide transition-colors ${
+              tradeActive ? "text-accent" : "text-white hover:text-accent"
+            }`}
+          >
+            Trade &amp; Investment
+            <ChevronDown
+              className={`h-5 w-5 transition-transform ${mobileTradeOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              mobileTradeOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            {TRADE_CHILDREN.map((child) => (
+              <Link
+                key={child.href}
+                href={child.href}
+                className={`block border-b border-white/5 py-2 pl-4 text-base font-semibold tracking-wide transition-colors ${
+                  pathname === child.href
+                    ? "text-accent"
+                    : "text-white/80 hover:text-accent"
+                }`}
+              >
+                {child.label}
+              </Link>
+            ))}
+          </div>
+
+          {NAV_AFTER.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`border-b border-white/10 py-3 text-lg font-bold tracking-wide transition-colors ${
+                pathname === item.href
+                  ? "text-accent"
+                  : "text-white hover:text-accent"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Mobile auth buttons */}
+          <div className="mt-8 flex flex-col gap-3">
+            <Button
+              variant="ghost"
+              size="lg"
+              className="w-full whitespace-nowrap rounded-[20px] border border-white/50 px-6 py-3 text-base font-bold tracking-wide text-white hover:bg-white hover:text-primary"
+              render={<Link href="/login" />}
+            >
+              Login
+            </Button>
+            <Button
+              size="lg"
+              className="w-full whitespace-nowrap rounded-[20px] bg-accent px-6 py-3 text-base font-bold tracking-wide text-accent-foreground hover:bg-accent/90"
+              render={<Link href="/register" />}
+            >
+              Register
+            </Button>
+          </div>
+        </nav>
       </div>
     </header>
   );

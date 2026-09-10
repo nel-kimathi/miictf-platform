@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getPage } from "@/lib/content";
 import { SectionRenderer } from "@/components/public/sections";
 import { ContactForm } from "@/components/public/contact-form";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Contact" };
+
+const fallback = (
+  <section className="mx-auto max-w-5xl px-4 py-24 text-center">
+    <h1 className="font-heading text-3xl font-bold text-primary">Contact Us</h1>
+    <p className="mt-4 text-muted-foreground">Content is being configured. Please check back soon.</p>
+  </section>
+);
 
 export default async function ContactPage() {
   const page = await getPage("contact");
-  if (!page) notFound();
+  if (!page) return fallback;
 
   const hero = page.sections.filter((s) => s.key === "hero");
   const details = page.sections.filter((s) => s.key !== "hero");

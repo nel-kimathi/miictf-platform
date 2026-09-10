@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Manrope, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "MAIICTF — Meru International Investment Conference & Trade Fair",
-    template: "%s | MAIICTF",
+    default: "MIICCOF — Meru International Investment Conference & Consumer Fair",
+    template: "%s | MIICCOF",
   },
   description:
-    "The Meru International Investment Conference & Trade Fair (MAIICTF) — connecting investors, government and business to opportunities in Meru.",
+    "The Meru International Investment Conference & Consumer Fair (MIICCOF) — connecting investors, government and business to opportunities in Meru.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${fraunces.variable} antialiased`}
+        className={`${sourceSans.variable} ${manrope.variable} antialiased`}
       >
         {children}
       </body>

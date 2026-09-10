@@ -14,7 +14,7 @@ export const auth = betterAuth({
     sendVerificationEmail: async ({ user, url }) => {
       await sendMail({
         to: user.email,
-        subject: "Verify your MAIICTF account",
+        subject: "Verify your MIICCOF account",
         html: `<p>Hello ${user.name},</p>
 <p>Thank you for registering for the Meru International Investment Conference &amp; Trade Fair.</p>
 <p>Please verify your email address by clicking the link below:</p>
