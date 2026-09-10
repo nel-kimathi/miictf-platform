@@ -46,6 +46,7 @@ model User {
   sessions           Session[]
   accounts           Account[]
   booths             Booth[]
+  systemLogs         SystemLog[]
 
   @@map("user")
 }
@@ -197,4 +198,22 @@ model Booth {
 
   @@unique([hallId, number])
   @@map("booth")
+}
+
+// --- System logs (audit trail of admin actions) ---
+
+model SystemLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String   // e.g. CREATE, UPDATE, DELETE, APPROVE, ASSIGN
+  entityType  String   // e.g. USER, DELEGATE, SPONSOR, EXHIBITOR, BOOTH, HALL, NEWS
+  entityId    String?
+  details     Json?    // structured payload
+  createdAt   DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([entityType, entityId])
+  @@map("system_log")
 }
