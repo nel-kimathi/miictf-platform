@@ -13,16 +13,18 @@
 - Updated all hardcoded references in components, layouts, metadata, auth emails, contact form, login/register pages
 - Updated TiDB Cloud database: replaced MAIICTF in page titles, section titles/subtitles/body/metadata, and news articles
 - Updated seed file and project docs (AGENTS.md, BUILD_PLAN.md, PROGRESS.md, README.md) for consistency
+- Committed all uncommitted work to git and pushed to GitHub (commit `6641ffa`)
+- Exported full TiDB Cloud database to `hostinger-migration.sql` ready for Hostinger import
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Site acronym changed from MAIICTF to MIICCOF (Meru International Investment Conference and Consumer Fair) per user request
 
 **Blocked on / open questions for Nelson:**
-- None
+- Waiting for Hostinger MySQL credentials to import the database
 
 **Next session should start with:**
-- Run `scripts/start-mysql.ps1` to start local MySQL, then `npm run dev`
-- Check `BUILD_PLAN.md` for next unchecked items — Phase 2 admin portal modules
+- Import `hostinger-migration.sql` into Hostinger MySQL and update DATABASE_URL
+- Build Phase 2 admin portal modules (User Management, Dashboard, Delegate/Sponsor/Exhibitor CRUD, News, Booths, Reports, System Logs)
 - Live site: https://miictf-platform.vercel.app
 - TiDB Cloud DB credentials: stored in Vercel env vars (DATABASE_URL)
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
