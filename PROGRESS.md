@@ -7,6 +7,33 @@
 
 ## Session log
 
+### 2026-09-10 (later session)
+**Done:**
+- Built Delegate Management module: list/search/filter by role=DELEGATE, approve/reject, export CSV, server-side RBAC
+- Built Sponsor Management module: list/search/filter by role=SPONSOR, approve/reject, export CSV
+- Built Exhibitor Management module: list/search/filter by role=EXHIBITOR, approve/reject, export CSV
+- Built Reports module: aggregate stats, country/category breakdowns, CSV exports for users/countries/categories
+- Rebranded admin sidebar label from "MIICTF Admin" to "MIICCOF Admin"
+- Reverted unfinished `SystemLog` schema change to avoid migration risk while modules using only the existing User model were completed
+- `npm run lint` and `npm run typecheck` pass locally for all changes
+- Committed and pushed three commits: `edd3ae5`, `6f097d4`, `0729255`
+
+**Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
+- Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
+- GitHub Actions run #43 had a failure caused by a Next `<a>` tag; run #44 and subsequent runs are passing.
+
+**Blocked on / open questions for Nelson:**
+- Still waiting for Hostinger MySQL credentials to import `hostinger-migration.sql`
+
+**Next session should start with:**
+- Build Booth Management (requires schema additions: ExhibitionHall, Booth) or System Logs (requires schema addition: SystemLog)
+- Build Settings module (no schema change if read-only; needs schema additions for editable settings)
+- Run security hardening pass (input validation audit, CSRF check, session config review)
+- Live site: https://miictf-platform.vercel.app
+- Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
+
+---
+
 ### 2026-09-10
 **Done:**
 - Replaced MAIICTF acronym with MIICCOF across the public site
