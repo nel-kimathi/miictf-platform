@@ -84,10 +84,10 @@ and land on a role-appropriate (even if bare) dashboard.
 - [x] Admin Settings page for editable site configuration
 
 ### Security hardening pass
-- [ ] Confirm CSRF protection on all state-changing routes
-- [ ] Confirm input validation (server-side, not just client) on every form
-- [ ] Confirm RBAC checks on every API route/server action, not just UI hiding
-- [ ] Review session expiry/config
+- [x] Confirm CSRF protection on all state-changing routes (Better Auth cookie + SameSite)
+- [x] Confirm input validation (server-side, not just client) on every form
+- [x] Confirm RBAC checks on every API route/server action, not just UI hiding
+- [x] Review session expiry/config (7-day sessions, 1-day refresh, secure cookies)
 - [ ] HTTPS confirmed in Hostinger deployment config
 
 ## Phase 3 — Deployment & Handover
