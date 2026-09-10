@@ -5,6 +5,15 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { sendMail } from "@/lib/mail";
 
+function escapeHtml(text: string) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export type FormState = { ok: boolean; message: string };
 
 const emailSchema = z.email();
@@ -63,10 +72,9 @@ export async function submitContact(
     await sendMail({
       to,
       subject: `[MIICCOF contact] ${subject}`,
-      html: `<p><strong>From:</strong> ${name} &lt;${email}&gt;</p><p>${message.replace(
-        /\n/g,
-        "<br/>"
-      )}</p>`,
+      html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p><p>${escapeHtml(
+        message
+      ).replace(/\n/g, "<br/>")}</p>`,
     });
     return { ok: true, message: "Message sent. We'll get back to you soon." };
   } catch {

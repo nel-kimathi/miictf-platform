@@ -3,8 +3,25 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/db";
 import { sendMail } from "@/lib/mail";
 
+function escapeHtml(text: string) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: "mysql" }),
+  session: {
+    expiresIn: 60 * 60 * 24 * 7, // 7 days
+    updateAge: 60 * 60 * 24, // refresh session if older than 1 day
+  },
+  advanced: {
+    cookiePrefix: "miictf",
+    useSecureCookies: process.env.NODE_ENV === "production",
+  },
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
@@ -15,10 +32,10 @@ export const auth = betterAuth({
       await sendMail({
         to: user.email,
         subject: "Verify your MIICCOF account",
-        html: `<p>Hello ${user.name},</p>
-<p>Thank you for registering for the Meru International Investment Conference &amp; Trade Fair.</p>
+        html: `<p>Hello ${escapeHtml(user.name)},</p>
+<p>Thank you for registering for the Meru International Investment Conference &amp; Consumer Fair.</p>
 <p>Please verify your email address by clicking the link below:</p>
-<p><a href="${url}">Verify my email</a></p>
+<p><a href="${escapeHtml(url)}">Verify my email</a></p>
 <p>If you did not create this account, you can ignore this email.</p>`,
       });
     },
