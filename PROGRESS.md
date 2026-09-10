@@ -19,18 +19,21 @@
 - Committed and pushed three commits: `edd3ae5`, `6f097d4`, `0729255`
 - Fixed Vercel production deployment failure by adding `postinstall: "prisma generate"` to `package.json` so the generated Prisma client is created during Vercel's `npm install`
 - GitHub Actions run #48 and Vercel deployment for commit `8b3aadd` are now passing
+- Added `ExhibitionHall` and `Booth` models with `BoothStatus` enum (AVAILABLE, RESERVED, ALLOCATED, OCCUPIED), applied migration locally and to TiDB Cloud
+- Built Exhibition Hall admin CRUD (list, create, edit, delete) under `/admin/booths`
+- Committed and pushed schema migration (`fd762d9`) and hall CRUD (`44aef78`); Vercel deployment successful
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
 - GitHub Actions run #43 had a failure caused by a Next `<a>` tag; runs #44 onward and Vercel deployments are now passing.
+- Booth schema designed to support a future visual booth map: halls contain booths with structured number, size, category, status, price, and exhibitor relation.
 
 **Blocked on / open questions for Nelson:**
 - Still waiting for Hostinger MySQL credentials to import `hostinger-migration.sql`
 
 **Next session should start with:**
-- Build Booth Management (requires schema additions: ExhibitionHall, Booth) or System Logs (requires schema addition: SystemLog)
-- Build Settings module (no schema change if read-only; needs schema additions for editable settings)
-- Run security hardening pass (input validation audit, CSRF check, session config review)
+- Continue Booth Management: booth CRUD and exhibitor assignment
+- Then System Logs, Settings, security hardening pass
 - Live site: https://miictf-platform.vercel.app
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 

@@ -63,10 +63,11 @@ and land on a role-appropriate (even if bare) dashboard.
 ### Exhibitor + Booth modules
 - [ ] Exhibitor profile: company, industry, products, contact, registration status
 - [x] Admin list/search/approve/reject/export exhibitors (basic, using existing User fields)
-- [ ] Booth data model: Hall → Booth (number, size, category, status)
-- [ ] Admin: create halls/booths, assign exhibitor ↔ booth
+- [x] Booth data model: Hall → Booth (number, size, category, status)
+- [x] Admin: create halls
+- [ ] Admin: create booths and assign exhibitor ↔ booth
 - [ ] Exhibitor dashboard: view own allocated booth
-- [ ] (Design only, no UI yet) confirm schema supports a future visual booth map
+- [x] (Design only, no UI yet) confirm schema supports a future visual booth map
 
 ### News module
 - [x] Admin CRUD, scheduled publishing, cover image upload, categories
