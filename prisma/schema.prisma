@@ -200,6 +200,17 @@ model Booth {
   @@map("booth")
 }
 
+// --- Site settings (editable configuration) ---
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+
+  @@map("site_setting")
+}
+
 // --- System logs (audit trail of admin actions) ---
 
 model SystemLog {
