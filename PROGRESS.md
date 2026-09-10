@@ -17,10 +17,12 @@
 - Reverted unfinished `SystemLog` schema change to avoid migration risk while modules using only the existing User model were completed
 - `npm run lint` and `npm run typecheck` pass locally for all changes
 - Committed and pushed three commits: `edd3ae5`, `6f097d4`, `0729255`
+- Fixed Vercel production deployment failure by adding `postinstall: "prisma generate"` to `package.json` so the generated Prisma client is created during Vercel's `npm install`
+- GitHub Actions run #48 and Vercel deployment for commit `8b3aadd` are now passing
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
-- GitHub Actions run #43 had a failure caused by a Next `<a>` tag; run #44 and subsequent runs are passing.
+- GitHub Actions run #43 had a failure caused by a Next `<a>` tag; runs #44 onward and Vercel deployments are now passing.
 
 **Blocked on / open questions for Nelson:**
 - Still waiting for Hostinger MySQL credentials to import `hostinger-migration.sql`
