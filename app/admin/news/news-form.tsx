@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -135,7 +136,7 @@ export function NewsForm({
 
       <div className="flex gap-3 pt-2">
         <Button type="submit">{article ? "Update Article" : "Create Article"}</Button>
-        <Button type="button" variant="outline" render={<a href="/admin/news">Cancel</a>} />
+        <Button type="button" variant="outline" render={<Link href="/admin/news">Cancel</Link>} />
       </div>
     </form>
   );
