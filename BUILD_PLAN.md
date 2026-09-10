@@ -81,7 +81,7 @@ and land on a role-appropriate (even if bare) dashboard.
 - [ ] Booth Allocation report (requires Booth module)
 
 ### Settings module
-- [ ] Admin Settings page for editable site configuration
+- [x] Admin Settings page for editable site configuration
 
 ### Security hardening pass
 - [ ] Confirm CSRF protection on all state-changing routes

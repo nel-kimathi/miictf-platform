@@ -27,6 +27,9 @@
 - Built `/admin/logs` audit log viewer and `logAdminAction` helper
 - Logged user, news, delegate, sponsor, exhibitor, hall and booth admin actions to `SystemLog`
 - Removed temporary setup-admin page and system_log migration route after use
+- Added `SiteSetting` model and applied migration to TiDB Cloud via temporary admin-only API route (route removed after use)
+- Built `/admin/settings` page to edit site name, tagline, contact email, event dates/location, social URLs
+- Wired site settings into public footer (site name, tagline, contact email, location, copyright)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
