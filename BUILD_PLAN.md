@@ -43,37 +43,44 @@ and land on a role-appropriate (even if bare) dashboard.
 ## Phase 2 — Admin Portal, Modules, Reports
 
 ### Admin core
-- [ ] Admin layout + navigation (Dashboard, User Mgmt, Delegate, Sponsor, Exhibitor,
+- [x] Admin layout + navigation (Dashboard, User Mgmt, Delegate, Sponsor, Exhibitor,
       Booth, News, Reports, Settings, System Logs)
-- [ ] Dashboard: summary cards + charts (totals, pending/approved registrations,
+- [x] Dashboard: summary cards + charts (totals, pending/approved registrations,
       latest registrations, recent announcements)
-- [ ] User Management: list/search/edit/deactivate users, assign roles
+- [x] User Management: list/search/edit/deactivate users, assign roles
 - [ ] System Logs: audit log of admin actions (who did what, when)
 
 ### Delegate module
-- [ ] Admin: approve/reject/edit/search/export delegates
+- [x] Admin: approve/reject/edit/search/export delegates
 - [ ] Delegate dashboard: view/edit own profile (permitted fields only), announcements
 
 ### Sponsor module
 - [ ] Sponsor profile fields: category, company info, brand assets, status, contacts,
       website link
-- [ ] Admin CRUD for sponsors; sponsor-facing dashboard shows own info only
+- [x] Admin list/search/approve/reject/export sponsors (basic, using existing User fields)
+- [ ] Sponsor-facing dashboard shows own info only
 
 ### Exhibitor + Booth modules
 - [ ] Exhibitor profile: company, industry, products, contact, registration status
+- [x] Admin list/search/approve/reject/export exhibitors (basic, using existing User fields)
 - [ ] Booth data model: Hall → Booth (number, size, category, status)
 - [ ] Admin: create halls/booths, assign exhibitor ↔ booth
 - [ ] Exhibitor dashboard: view own allocated booth
 - [ ] (Design only, no UI yet) confirm schema supports a future visual booth map
 
 ### News module
-- [ ] Admin CRUD, scheduled publishing, cover image upload, categories
-- [ ] Public News & Updates page reflects published articles automatically
+- [x] Admin CRUD, scheduled publishing, cover image upload, categories
+- [x] Public News & Updates page reflects published articles automatically
 
 ### Reports
-- [ ] Delegates, Sponsors, Exhibitors, Booth Allocation, Countries Represented,
+- [x] Delegates, Sponsors, Exhibitors, Countries Represented,
       Registration Statistics
-- [ ] Export to PDF, Excel, CSV for each
+- [x] Export to CSV
+- [ ] Export to PDF and Excel
+- [ ] Booth Allocation report (requires Booth module)
+
+### Settings module
+- [ ] Admin Settings page for editable site configuration
 
 ### Security hardening pass
 - [ ] Confirm CSRF protection on all state-changing routes
@@ -84,7 +91,7 @@ and land on a role-appropriate (even if bare) dashboard.
 
 ## Phase 3 — Deployment & Handover
 
-- [ ] Production build tested locally
+- [x] Production build tested locally
 - [ ] Deploy to Hostinger Business Node.js hosting, connect domain + SSL
 - [ ] Set production env vars (DB, SMTP, auth secrets) on Hostinger
 - [ ] Smoke test all five roles end-to-end in production
