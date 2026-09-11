@@ -355,19 +355,6 @@ const pages: PageSeed[] = [
         subtitle: "Partner with MIICCOF",
       },
       {
-        key: "tiers",
-        order: 1,
-        title: "Sponsorship Tiers",
-        metadata: {
-          tiers: [
-            { name: "Platinum", description: "Headline sponsor: naming rights, keynote slot, premium booth, branding across all platforms." },
-            { name: "Gold", description: "Panel sponsorship, large booth, branding on selected platforms." },
-            { name: "Silver", description: "Standard booth and brand presence at the conference." },
-            { name: "Bronze / In-kind", description: "Supporting partner with tailored benefits." },
-          ],
-        },
-      },
-      {
         key: "cta",
         order: 2,
         title: "Become a sponsor",
@@ -503,6 +490,69 @@ async function main() {
         publishedAt: n.publishedAt,
       },
       create: { id: randomUUID(), ...n },
+    });
+  }
+
+  console.log("Seeding site settings...");
+  const defaultSettings: Record<string, string> = {
+    siteName: "MIICCOF",
+    siteTagline: "Meru International Investment Conference & Consumer Fair",
+    contactEmail: "secretariat@example.com",
+    supportPhone: "",
+    eventStartDate: "2026-12-03",
+    eventEndDate: "2026-12-05",
+    eventLocation: "Meru, Kenya",
+    socialFacebook: "",
+    socialTwitter: "",
+    socialLinkedIn: "",
+    sponsorsIntro:
+      "MIICCOF is a flagship platform convening investors, businesses, government, development partners, financial institutions, and consumers to unlock investment and commercial opportunities across Meru County and the wider region, showcasing potential in agriculture and agribusiness, avocado and miraa value addition, tourism and hospitality, manufacturing, trade, financial services, technology, SMEs, and Special Economic Zone (SEZ) opportunities.",
+    sponsorshipTiers: JSON.stringify([
+      {
+        name: "Star Partner",
+        amount: "KES 5,000,000",
+        slots: "1 slot",
+        position: 'Title Partner ("Powered by [Company]")',
+      },
+      {
+        name: "Platinum Partner",
+        amount: "KES 3,000,000",
+        slots: "3 slots",
+        position: "Co-Powered Partner",
+      },
+      {
+        name: "Gold Partner",
+        amount: "KES 2,000,000",
+        slots: "5 slots",
+        position: "Official Gold Partner",
+      },
+      {
+        name: "Silver Partner",
+        amount: "KES 1,000,000",
+        slots: "10 slots",
+        position: "Official Silver Partner",
+      },
+      {
+        name: "Bronze Partner",
+        amount: "KES 500,000",
+        slots: "15 slots",
+        position: "Official Bronze Partner",
+      },
+    ]),
+    whyPartnerPoints: JSON.stringify([
+      "Align your brand with a high-level investment and business platform in Meru County",
+      "Engage investors, entrepreneurs, consumers, government, and financial institutions",
+      "Showcase products through exhibition, activation, and direct customer engagement",
+      "Strengthen visibility via event branding, media exposure, and digital marketing",
+      "Build strategic relationships through VIP networking and B2B matchmaking",
+      "Demonstrate commitment to enterprise growth and regional investment",
+    ]),
+  };
+  for (const [key, value] of Object.entries(defaultSettings)) {
+    await prisma.siteSetting.upsert({
+      where: { key },
+      update: {},
+      create: { id: randomUUID(), key, value },
     });
   }
 
