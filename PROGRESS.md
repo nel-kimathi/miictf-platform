@@ -22,7 +22,16 @@
 - Updated local `.vercel/project.json` project name from `miictf-platform` to `miiccof-platform` to keep future deploys aligned
 - Increased the logo image size by 20% inside the same circular background by reducing padding (header and footer)
 - Re-applied the correct Vercel alias after deploy
-- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`, `97a1e9e`)
+- Updated Sponsors & Partners page with CMS-editable sponsorship tiers and Why Partner section
+- Added `sponsorsIntro`, `sponsorshipTiers`, and `whyPartnerPoints` to `SiteSetting` with admin settings UI
+- Built `SponsorshipSection` component: intro paragraph, 5-tier cards (Star/Platinum/Gold/Silver/Bronze with amount, slots, position), and Why Partner bullet list
+- Updated public `sponsors-partners` page to render hero and CTA from CMS plus sponsorship content from settings
+- Updated `prisma/seed.ts` and added `scripts/seed-sponsorship-settings.ts` for default sponsorship content
+- Preserved existing "Become a sponsor" / "Register as Sponsor" CTA section unchanged
+- Ran `npm run lint`, `npm run typecheck`, and `npm run build` successfully
+- Committed and pushed the work (`a2bc329`); deployed to Vercel and fixed alias
+- Verified live page at `https://miiccof-platform.vercel.app/sponsors-partners` displays all 5 tiers and Why Partner points
+- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`, `97a1e9e`, `a2bc329`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
