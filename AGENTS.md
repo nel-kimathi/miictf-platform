@@ -22,7 +22,7 @@ that is specific to the 2026 MIICTF event where a general solution is realistic.
 - **Auth:** Better Auth (fallback: Auth.js/NextAuth if Better Auth hits a blocker)
 - **Email:** Hostinger SMTP (for verification emails, notifications)
 - **Hosting:** Hostinger Business Hosting (Node.js)
-- **Version control:** GitHub — repo is `github.com/nel-kimathi/miictf-platform` (private)
+- **Version control:** GitHub — repo is `github.com/nel-kimathi/miiccof-platform` (private)
 
 ## Roles & permissions
 
