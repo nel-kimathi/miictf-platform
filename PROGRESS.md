@@ -15,7 +15,7 @@
 - Updated `AGENTS.md` to reflect the new repo name
 - Committed and pushed the doc update (`8ea64f0`)
 - Disabled Vercel SSO deployment protection so the live preview is publicly accessible without login
-- Verified the site loads and displays MIICCOF content at `https://miiccof-platform-nelson-001-s-projects.vercel.app`
+- Verified the site loads and displays MIICCOF content at `https://miiccof-platform.vercel.app`
 - Committed and pushed the progress updates (`4aa897f`, `40d806e`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
@@ -26,7 +26,7 @@
 
 **Next session should start with:**
 - Await Hostinger credentials; import `hostinger-migration.sql`, update `DATABASE_URL` and other production env vars, then deploy to Hostinger
-- Live preview: https://miiccof-platform-nelson-001-s-projects.vercel.app
+- Live preview: https://miiccof-platform.vercel.app
 - Repo: https://github.com/nel-kimathi/miiccof-platform
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 
@@ -70,7 +70,7 @@
 **Next session should start with:**
 - Continue Booth Management: booth CRUD and exhibitor assignment
 - Then System Logs, Settings, security hardening pass
-- Live site: https://miiccof-platform-nelson-001-s-projects.vercel.app
+- Live site: https://miiccof-platform.vercel.app
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 
 ---
@@ -93,7 +93,7 @@
 **Next session should start with:**
 - Import `hostinger-migration.sql` into Hostinger MySQL and update DATABASE_URL
 - Build Phase 2 admin portal modules (User Management, Dashboard, Delegate/Sponsor/Exhibitor CRUD, News, Booths, Reports, System Logs)
-- Live site: https://miiccof-platform-nelson-001-s-projects.vercel.app
+- Live site: https://miiccof-platform.vercel.app
 - TiDB Cloud DB credentials: stored in Vercel env vars (DATABASE_URL)
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 
@@ -101,7 +101,7 @@
 
 ### 2026-09-09
 **Done:**
-- Deployed to Vercel (production): https://miiccof-platform-nelson-001-s-projects.vercel.app
+- Deployed to Vercel (production): https://miiccof-platform.vercel.app
 - Set up TiDB Cloud serverless MySQL for production database
 - Exported local MySQL data and imported into TiDB Cloud (9 pages, 29 sections, 3 news)
 - Fixed Prisma adapter SSL config for TiDB Cloud connections (`lib/db.ts` — parse URL, pass `PoolConfig` with SSL)
