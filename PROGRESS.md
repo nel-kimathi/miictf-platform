@@ -14,6 +14,9 @@
 - Verified `git fetch origin` and `git status` work with the new URL
 - Updated `AGENTS.md` to reflect the new repo name
 - Committed and pushed the doc update (`8ea64f0`)
+- Disabled Vercel SSO deployment protection so the live preview is publicly accessible without login
+- Verified the site loads and displays MIICCOF content at `https://miiccof-platform-nelson-001-s-projects.vercel.app`
+- Committed and pushed the progress update (`4aa897f`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
