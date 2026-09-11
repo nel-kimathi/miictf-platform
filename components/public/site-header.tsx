@@ -94,17 +94,20 @@ export function SiteHeader() {
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="inline-flex shrink-0 items-center transition-all duration-300">
+        <Link
+          href="/"
+          className="inline-flex shrink-0 items-center rounded-[20px] bg-white p-2 shadow-lg ring-1 ring-black/5 transition-all duration-300"
+        >
           <ImgWithFallback
             src="/images/logos/logo-no-bg.png"
             alt="MIICCOF logo"
             className={`w-auto transition-all duration-300 ${
-              solid ? "h-14 sm:h-16" : "h-16 sm:h-20"
+              solid ? "h-16 sm:h-20" : "h-20 sm:h-24"
             }`}
             fallback={
               <span
-                className={`font-heading font-bold tracking-tight text-white transition-all duration-300 ${
-                  solid ? "text-xl" : "text-3xl"
+                className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
+                  solid ? "px-2 text-xl" : "px-3 text-3xl"
                 }`}
               >
                 MIICCOF
