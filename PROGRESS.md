@@ -45,7 +45,7 @@
 **Next session should start with:**
 - Continue Booth Management: booth CRUD and exhibitor assignment
 - Then System Logs, Settings, security hardening pass
-- Live site: https://miictf-platform.vercel.app
+- Live site: https://miiccof-platform.vercel.app
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 
 ---
@@ -68,7 +68,7 @@
 **Next session should start with:**
 - Import `hostinger-migration.sql` into Hostinger MySQL and update DATABASE_URL
 - Build Phase 2 admin portal modules (User Management, Dashboard, Delegate/Sponsor/Exhibitor CRUD, News, Booths, Reports, System Logs)
-- Live site: https://miictf-platform.vercel.app
+- Live site: https://miiccof-platform.vercel.app
 - TiDB Cloud DB credentials: stored in Vercel env vars (DATABASE_URL)
 - Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
 
@@ -76,7 +76,7 @@
 
 ### 2026-09-09
 **Done:**
-- Deployed to Vercel (production): https://miictf-platform.vercel.app
+- Deployed to Vercel (production): https://miiccof-platform.vercel.app
 - Set up TiDB Cloud serverless MySQL for production database
 - Exported local MySQL data and imported into TiDB Cloud (9 pages, 29 sections, 3 news)
 - Fixed Prisma adapter SSL config for TiDB Cloud connections (`lib/db.ts` — parse URL, pass `PoolConfig` with SSL)
