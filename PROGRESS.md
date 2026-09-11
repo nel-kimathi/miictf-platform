@@ -16,7 +16,7 @@
 - Committed and pushed the doc update (`8ea64f0`)
 - Disabled Vercel SSO deployment protection so the live preview is publicly accessible without login
 - Verified the site loads and displays MIICCOF content at `https://miiccof-platform-nelson-001-s-projects.vercel.app`
-- Committed and pushed the progress update (`4aa897f`)
+- Committed and pushed the progress updates (`4aa897f`, `40d806e`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
