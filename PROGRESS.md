@@ -16,7 +16,11 @@
 - Committed and pushed the doc update (`8ea64f0`)
 - Disabled Vercel SSO deployment protection so the live preview is publicly accessible without login
 - Verified the site loads and displays MIICCOF content at `https://miiccof-platform.vercel.app`
-- Committed and pushed the progress updates (`4aa897f`, `40d806e`)
+- Changed header and footer logos to circular white backgrounds, reduced size by 30%, and made them mobile-friendly
+- Increased logo size by 20% after user feedback; adjusted mobile menu padding to match
+- Fixed Vercel production alias: ensured `https://miiccof-platform.vercel.app` points to the latest deployment and removed the stale `miictf-platform.vercel.app` alias
+- Updated local `.vercel/project.json` project name from `miictf-platform` to `miiccof-platform` to keep future deploys aligned
+- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
