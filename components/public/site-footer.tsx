@@ -13,9 +13,9 @@ export async function SiteFooter() {
           <Image
             src="/images/logos/logo-no-bg.png"
             alt={`${settings.siteName} logo`}
-            width={160}
-            height={60}
-            className="h-12 w-auto rounded-lg bg-white object-contain p-2"
+            width={200}
+            height={80}
+            className="h-16 w-auto object-contain"
           />
           <p className="mt-2 text-sm text-primary-foreground/80">
             {settings.siteTagline}
