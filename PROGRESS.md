@@ -20,7 +20,9 @@
 - Increased logo size by 20% after user feedback; adjusted mobile menu padding to match
 - Fixed Vercel production alias: ensured `https://miiccof-platform.vercel.app` points to the latest deployment and removed the stale `miictf-platform.vercel.app` alias
 - Updated local `.vercel/project.json` project name from `miictf-platform` to `miiccof-platform` to keep future deploys aligned
-- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`)
+- Increased the logo image size by 20% inside the same circular background by reducing padding (header and footer)
+- Re-applied the correct Vercel alias after deploy
+- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`, `97a1e9e`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
