@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getPublicSettings } from "@/app/admin/settings/actions";
 import { NewsletterForm } from "./newsletter-form";
 
@@ -9,7 +10,13 @@ export async function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-heading text-lg font-bold">{settings.siteName}</p>
+          <Image
+            src="/images/logos/logo-no-bg.png"
+            alt={`${settings.siteName} logo`}
+            width={160}
+            height={60}
+            className="h-12 w-auto rounded-lg bg-white object-contain p-2"
+          />
           <p className="mt-2 text-sm text-primary-foreground/80">
             {settings.siteTagline}
           </p>

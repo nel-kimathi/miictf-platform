@@ -99,7 +99,7 @@ export function SiteHeader() {
           className="inline-flex shrink-0 items-center rounded-2xl bg-white shadow-lg ring-1 ring-black/5 transition-all duration-300"
         >
           <ImgWithFallback
-            src="/images/logos/miictf-logo.png"
+            src="/images/logos/logo-no-bg.png"
             alt="MIICCOF logo"
             className={`w-auto transition-all duration-300 ${
               solid ? "h-10 px-3 py-2 sm:h-12" : "h-14 px-4 py-2 sm:h-16"
