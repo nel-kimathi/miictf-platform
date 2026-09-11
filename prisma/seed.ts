@@ -130,16 +130,6 @@ const pages: PageSeed[] = [
         title: "Sponsorship Packages",
         subtitle: "Partner with us and put your brand at the centre",
         metadata: {
-          tiers: [
-            { name: "Platinum", description: "Headline visibility and premium exhibition space." },
-            { name: "Gold", description: "Prominent branding and speaking opportunities." },
-            { name: "Silver", description: "Brand presence and exhibition booth." },
-          ],
-          brands: [
-            { name: "KNCCI – Meru Chapter", image: "/images/brands/kncci-logo.png", href: "https://meruchamber.co.ke/" },
-            { name: "MUST", image: "/images/brands/must-logo.png", href: "https://www.must.ac.ke/" },
-            { name: "Meru County Government", image: "/images/brands/mcg-logo.png" },
-          ],
           cta: { label: "Sponsorship Details", href: "/sponsors-partners" },
         },
       },

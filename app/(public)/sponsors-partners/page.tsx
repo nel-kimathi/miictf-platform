@@ -18,9 +18,11 @@ export default async function SponsorsPartnersPage() {
     <>
       {heroSection ? <SectionRenderer section={heroSection} /> : null}
       <SponsorshipSection
-        sponsorsIntro={settings.sponsorsIntro}
+        title="Sponsorship Packages"
+        intro={settings.sponsorsIntro}
         sponsorshipTiers={settings.sponsorshipTiers}
         whyPartnerPoints={settings.whyPartnerPoints}
+        showWhyPartner
       />
       {ctaSection ? <SectionRenderer section={ctaSection} /> : null}
     </>

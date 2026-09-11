@@ -1,26 +1,34 @@
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import type { SponsorshipTier } from "@/app/admin/settings/actions";
 
 export function SponsorshipSection({
-  sponsorsIntro,
+  title = "Sponsorship Packages",
+  intro,
   sponsorshipTiers,
-  whyPartnerPoints,
+  whyPartnerPoints = [],
+  showWhyPartner = true,
+  cta,
 }: {
-  sponsorsIntro: string;
+  title?: string;
+  intro?: string;
   sponsorshipTiers: SponsorshipTier[];
-  whyPartnerPoints: string[];
+  whyPartnerPoints?: string[];
+  showWhyPartner?: boolean;
+  cta?: { label: string; href: string };
 }) {
   return (
     <section className="bg-secondary/60 px-4 py-16">
       <div className="mx-auto max-w-7xl">
         <h2 className="font-heading text-center text-3xl font-bold text-primary sm:text-4xl">
-          Sponsorship Packages
+          {title}
         </h2>
 
-        {sponsorsIntro ? (
+        {intro ? (
           <p className="mx-auto mt-4 max-w-4xl text-center leading-relaxed text-muted-foreground">
-            {sponsorsIntro}
+            {intro}
           </p>
         ) : null}
 
@@ -46,7 +54,7 @@ export function SponsorshipSection({
           ))}
         </div>
 
-        {whyPartnerPoints.length > 0 ? (
+        {showWhyPartner && whyPartnerPoints.length > 0 ? (
           <div className="mt-16 rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-10">
             <h3 className="font-heading text-center text-2xl font-bold text-primary sm:text-3xl">
               Why Partner
@@ -59,6 +67,12 @@ export function SponsorshipSection({
                 </li>
               ))}
             </ul>
+          </div>
+        ) : null}
+
+        {cta ? (
+          <div className="mt-10 flex justify-center">
+            <Button render={<Link href={cta.href} />}>{cta.label}</Button>
           </div>
         ) : null}
       </div>
