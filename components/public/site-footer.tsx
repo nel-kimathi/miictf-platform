@@ -10,14 +10,16 @@ export async function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Image
-            src="/images/logos/logo-no-bg.png"
-            alt={`${settings.siteName} logo`}
-            width={200}
-            height={80}
-            className="h-16 w-auto object-contain"
-          />
-          <p className="mt-2 text-sm text-primary-foreground/80">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-1.5 shadow ring-1 ring-black/5 sm:h-14 sm:w-14 sm:p-2">
+            <Image
+              src="/images/logos/logo-no-bg.png"
+              alt={`${settings.siteName} logo`}
+              width={120}
+              height={120}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <p className="mt-3 text-sm text-primary-foreground/80">
             {settings.siteTagline}
           </p>
         </div>

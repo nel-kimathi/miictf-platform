@@ -96,20 +96,15 @@ export function SiteHeader() {
         {/* Logo */}
         <Link
           href="/"
-          className="inline-flex shrink-0 items-center rounded-[20px] bg-white p-2 shadow-lg ring-1 ring-black/5 transition-all duration-300"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white p-1.5 shadow-lg ring-1 ring-black/5 transition-all duration-300 sm:h-16 sm:w-16 sm:p-2"
+          aria-label="MIICCOF home"
         >
           <ImgWithFallback
             src="/images/logos/logo-no-bg.png"
             alt="MIICCOF logo"
-            className={`w-auto transition-all duration-300 ${
-              solid ? "h-16 sm:h-20" : "h-20 sm:h-24"
-            }`}
+            className="h-full w-full object-contain transition-all duration-300"
             fallback={
-              <span
-                className={`font-heading font-bold tracking-tight text-primary transition-all duration-300 ${
-                  solid ? "px-2 text-xl" : "px-3 text-3xl"
-                }`}
-              >
+              <span className="font-heading text-sm font-bold tracking-tight text-primary sm:text-xl">
                 MIICCOF
               </span>
             }
@@ -210,7 +205,7 @@ export function SiteHeader() {
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
-        style={{ paddingTop: solid ? "64px" : "80px" }}
+        style={{ paddingTop: solid ? "64px" : "72px" }}
       >
         <nav className="flex h-full flex-col overflow-y-auto px-6 py-6">
           {NAV_BEFORE.map((item) => (
