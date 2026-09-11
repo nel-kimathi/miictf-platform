@@ -31,7 +31,12 @@
 - Ran `npm run lint`, `npm run typecheck`, and `npm run build` successfully
 - Committed and pushed the work (`a2bc329`); deployed to Vercel and fixed alias
 - Verified live page at `https://miiccof-platform.vercel.app/sponsors-partners` displays all 5 tiers and Why Partner points
-- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`, `97a1e9e`, `a2bc329`)
+- Updated homepage `sponsorship-teaser` section to use the same 5-tier package cards as the Sponsors & Partners page (no Why Partner on homepage)
+- Made `SponsorshipSection` reusable with configurable title, intro, Why Partner visibility, and CTA
+- Updated homepage to render sponsorship section from shared settings while keeping other CMS sections intact
+- Ran lint/typecheck/build and deployed (`02cba49`)
+- Verified homepage displays the 5 sponsorship tiers with the "Sponsorship Details" CTA
+- Committed and pushed the progress updates (`4aa897f`, `40d806e`, `e9f9399`, `08e49cc`, `efbcd30`, `97a1e9e`, `a2bc329`, `02cba49`)
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - None
