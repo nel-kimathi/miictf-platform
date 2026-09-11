@@ -32,7 +32,7 @@
 - Wired site settings into public footer (site name, tagline, contact email, location, copyright)
 - Security hardening pass: added explicit session expiry (7 days), secure cookies in production, HTML escaping in contact/auth emails, confirmed server-side input validation and RBAC on all admin actions
 - Replaced header and footer logos with uploaded MIICCOF logo variants (`logo-no-bg.png` for header/footer, `logo-with-bg.png` retained for future light-background use)
-- Increased logo sizes in header and footer and removed white backgrounds so the transparent logo shows through
+- Increased header logo size and added white 20px rounded background so it is clearly visible on the hero and scrolled header
 
 **Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
 - Completed Sponsor/Exhibitor management using existing User model fields only (organization as company, category as tier/industry). Full sponsor/exhibitor profiles with brand assets, contact persons, products and booth allocation will require schema additions later.
