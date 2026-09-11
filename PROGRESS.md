@@ -7,6 +7,28 @@
 
 ## Session log
 
+### 2026-09-11
+**Done:**
+- Renamed GitHub repo from `nel-kimathi/miictf-platform` to `nel-kimathi/miiccof-platform`
+- Updated local git remote URL to point to the renamed repo (`git remote set-url origin https://github.com/nel-kimathi/miiccof-platform.git`)
+- Verified `git fetch origin` and `git status` work with the new URL
+- Updated `AGENTS.md` to reflect the new repo name
+- Committed and pushed the doc update (`8ea64f0`)
+
+**Decisions / deviations from AGENTS.md or BUILD_PLAN.md (if any):**
+- None
+
+**Blocked on / open questions for Nelson:**
+- Still waiting for Hostinger Business Node.js hosting + MySQL credentials to import `hostinger-migration.sql`
+
+**Next session should start with:**
+- Await Hostinger credentials; import `hostinger-migration.sql`, update `DATABASE_URL` and other production env vars, then deploy to Hostinger
+- Live preview: https://miiccof-platform-nelson-001-s-projects.vercel.app
+- Repo: https://github.com/nel-kimathi/miiccof-platform
+- Dev server log at `C:\Users\HUDINI\AppData\Local\Temp\opencode\next-dev.log`
+
+---
+
 ### 2026-09-10 (later session)
 **Done:**
 - Built Delegate Management module: list/search/filter by role=DELEGATE, approve/reject, export CSV, server-side RBAC
