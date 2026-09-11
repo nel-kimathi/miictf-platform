@@ -96,7 +96,7 @@ export function SiteHeader() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white p-1.5 shadow-lg ring-1 ring-black/5 transition-all duration-300 sm:h-[78px] sm:w-[78px] sm:p-2"
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white p-0.5 shadow-lg ring-1 ring-black/5 transition-all duration-300 sm:h-[78px] sm:w-[78px] sm:p-[2px]"
           aria-label="MIICCOF home"
         >
           <ImgWithFallback

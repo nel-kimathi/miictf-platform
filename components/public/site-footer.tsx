@@ -10,7 +10,7 @@ export async function SiteFooter() {
     <footer className="mt-16 border-t bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-1.5 shadow ring-1 ring-black/5 sm:h-16 sm:w-16 sm:p-2">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-0.5 shadow ring-1 ring-black/5 sm:h-16 sm:w-16 sm:p-[3px]">
             <Image
               src="/images/logos/logo-no-bg.png"
               alt={`${settings.siteName} logo`}
